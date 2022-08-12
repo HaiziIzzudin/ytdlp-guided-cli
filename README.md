@@ -6,4 +6,4 @@ To use my YouTube Downloader, simply open Windows Terminal on Windows 11 OR Wind
 
 Enter this code and follow the instructions.
 
-`iwr https://pastebin.com/raw/L9g1hXk0 | iex`
+`iwr https://raw.githubusercontent.com/HaiziIzzudin/ytdhaizi/main/ytdhaizicode.ps1 | iex`
