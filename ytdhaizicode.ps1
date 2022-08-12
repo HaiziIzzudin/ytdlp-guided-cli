@@ -1,20 +1,16 @@
 # Define function to delete prerequisites
 function DeletePrereq {Remove-Item ".\ffmpeg.zip" -Recurse -Force; Remove-Item ".\ffmpeg.exe" -Recurse -Force;}
-
-# make sure your powershell command is in C:\User\<yourusername>
-
 cls; # Clear terminal for a clean look
 
-# Welcome ascii art
 Write-Host "`n __      ________________    _________ ________     _____  ___________" -ForegroundColor Green;
 Write-Host "/  \    /  \_   _____/   |   \_   ___ \\_____  \   /     \ \_   _____/" -ForegroundColor Green;
 Write-Host "\   \/\/   /|    __)_|   |   /    \  \/ /   |   \ /  \ /  \ |    __)_ " -ForegroundColor Green;
 Write-Host " \        / |        \   |___\     \____    |    \    \    \|        \" -ForegroundColor Green;
 Write-Host "  \__/\  / /_______  /______ \\______  /_______  /____/\_  /_______  /" -ForegroundColor Green;
-Write-Host "       \/          \/       \/       \/        \/        \/        \/`n" -ForegroundColor Green;
+Write-Host "       \/          \/       \/       \/        \/        \/        \/`n" -ForegroundColor Green; # Welcome ascii art
 
 # Program intro
-Write-Host "YouTube downloader one liner by Haizi Izzudin"+"Powered by yt-dlp and ffmpeg" -ForegroundColor Green;
+Write-Host "YouTube downloader one liner by Haizi Izzudin`nPowered by yt-dlp and ffmpeg" -ForegroundColor Green;
 Start-Sleep -Seconds 1;
 Write-Host "`nAllow program to download prerequisites first (Prerequisites will be deleted once this session ends)" -ForegroundColor Yellow;
 
