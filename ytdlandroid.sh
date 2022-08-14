@@ -90,18 +90,5 @@ Header () {
 
 FirstTimeWizard () { clear; Header; EnterYTLink; TypeNQualitySelectionSingleMedia; }
 
-# Program should start here
-clear;
-echo
-echo
-echo
-echo
-echo
-echo
-echo
-echo
-echo
-echo
-echo                               Loading...;
-sleep 2;
-FirstTimeWizard;
+clear; Header;
+EnterYTLink; TypeNQualitySelectionSingleMedia;
