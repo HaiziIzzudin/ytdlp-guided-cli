@@ -44,16 +44,14 @@ DownloadAndInstallPrereq () {
     bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)"
 }
 
-
-
 # actual working program starts here...
 clear;
-echo -e "${green}====================================${e}"
-echo -e "${green}YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
-echo -e "${green}ANDROID VERSION 0.2a${e}"
-echo -e "${green}POWERED BY YT-DLP AND FFMPEG${e}"
-echo -e "${green}INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
-echo -e "${green}====================================${e}"
+echo -e "${green}      ======================================${e}"
+echo -e "${green}       YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
+echo -e "${green}       ANDROID VERSION 0.2a${e}"
+echo -e "${green}       POWERED BY YT-DLP AND FFMPEG${e}"
+echo -e "${green}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
+echo -e "${green}      ======================================${e}"
 echo 
 echo -e "${green}This program will download the best quality available to your Downloads folder.${e}"
 echo 
