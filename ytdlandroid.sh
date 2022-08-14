@@ -15,7 +15,7 @@ DownloadsDoneMessage () { echo -e "${green}Downloads done. It should be in your 
 BeforeDownloadRoutine () {
     bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
     cd ..
-    cd .
+    cd ..
     cd ..
     cd ..
     cd ..
