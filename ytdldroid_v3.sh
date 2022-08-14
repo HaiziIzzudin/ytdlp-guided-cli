@@ -1,26 +1,16 @@
-r="\e[31m"
-g="\e[32m"
-y="\e[33m"
-e="\e[0m"
+r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m" # color presets
 
-DownloadsDoneMessage () { echo -e "${g}Downloads done. It should be in your Downloads folder.${e}" }
+DownloadsDoneMessage () { echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"; }
 
 BeforeDownloadRoutine () {
-    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
-    cd ..
-    cd ..
-    cd ..
-    cd ..
-    cd ..
-    cd sdcard
-    cd download
+    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)"; cd ..; cd ..; cd ..; cd ..; cd ..; cd sdcard; cd download;
 }
 
 TypeNQualitySelectionSingleMedia () {
     echo -e "${y}What kind of downloads do you want?${e}"
-    echo -e "${y}[A] Audio Only${e}"
-    echo -e "${y}[V] YouTube Video${e}"
-    echo -e "${y}[N] Non-YouTube Video${e}"
+    echo -e "${y}(A) Audio Only${e}"
+    echo -e "${y}(V) YouTube Video${e}"
+    echo -e "${y}(N) Non-YouTube Video${e}"
     echo -e "${y}Enter neither will exit the program.${e}"
     read -e -p "Pick Your Poison: " typeselection
 	
@@ -42,9 +32,9 @@ TypeNQualitySelectionSingleMedia () {
     elif [ "$typeselection" = "V" ]
     then
         echo "${y}YouTube Video download selected. Choose resolution...${e}"
-        echo "${y}[1080] 1920x1080 video${e}"
-        echo "${y}[2K] 2560x1440 video${e}"
-        echo "${y}[4K] 3840x2160 video${e}"
+        echo "${y}(1080) 1920x1080 video${e}"
+        echo "${y}(2K) 2560x1440 video${e}"
+        echo "${y}(4K) 3840x2160 video${e}"
         echo "${y}(entering neither, or non-availability of resolution selected, will result to program selecting the highest resolution video available)${e}"
         read -e -p "Pick a resolution: " resolution
 		
@@ -81,19 +71,12 @@ TypeNQualitySelectionSingleMedia () {
     fi
 }
 
-EnterYTLink () { read -e -p "Paste YouTube URL: " youtubelink }
-
-Header () {
-    echo -e "${g}      ======================================${e}"
-    echo -e "${g}       YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
-    echo -e "${g}       ANDROID VERSION 0.2a${e}"
-    echo -e "${g}       POWERED BY YT-DLP AND FFMPEG${e}"
-    echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
-    echo -e "${g}      ======================================${e}"
-    echo
-}
-
-clear
-Header
-EnterYTLink
-TypeNQualitySelectionSingleMedia
+clear;
+echo -e "${g}      ======================================${e}"
+echo -e "${g}       YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
+echo -e "${g}       ANDROID VERSION 0.2a${e}"
+echo -e "${g}       POWERED BY YT-DLP AND FFMPEG${e}"
+echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
+echo -e "${g}      ======================================${e}"
+read -e -p "Paste YouTube URL: " youtubelink
+TypeNQualitySelectionSingleMedia;
