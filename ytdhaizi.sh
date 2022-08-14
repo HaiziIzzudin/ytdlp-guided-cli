@@ -1,3 +1,4 @@
 #! /bin/bash
 
-termux-setup-storage # giving permission to storage
+cd ~/storage/download;
+termux-setup-storage; # giving permission to storage
