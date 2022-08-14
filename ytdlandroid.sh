@@ -41,7 +41,7 @@ TypeNQualitySelection () {
 
 # actual working program starts here...
 clear; Header;
-read -e -p "${yellow}Paste YouTube URL: ${e}" youtubelink
+read -e -p "Paste YouTube URL: " youtubelink
 echo
 InstallUpdatePrereq # perform prereq checks b4 downloading
 ChangeDirToDownload # cd to downloads folder to download video on
