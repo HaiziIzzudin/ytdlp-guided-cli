@@ -90,15 +90,9 @@ Header () {
 
 FirstTimeWizard () { clear; Header; EnterYTLink; TypeNQualitySelectionSingleMedia; }
 
-# actual program starts here...
-FirstTimeWizard;
-
-
-
-
-
-
-
-
 # Later on todo TypeNQualitySelectionPlaylist
 # yt-dlp $youtubelink -f "bv+ba" -o "%(playlist_autonumber)d %(channel)s %(id)s.%(ext)s"
+
+# actual program starts here...
+clear;
+FirstTimeWizard;
