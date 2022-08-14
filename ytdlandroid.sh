@@ -63,7 +63,7 @@ CheckPrereq # perform file checks b4 downloading
 changeDirToDownload # cd to downloads folder to download video to working dir
 echo -e "${yellow}Starting download...${e}"
 echo
-yt-dlp $youtubelink -f "bv+ba"
+yt-dlp $youtubelink -f "bv+ba" -o "%(playlist_autonumber)d %(channel)s %(id)s.%(ext)s"
 echo 
 echo -e "${yellow}Downloads done. It should be in Downloads folder in your phone directory.${e}"
 echo
