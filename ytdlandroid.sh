@@ -28,9 +28,10 @@ CheckPrereq () { # check if yt-dlp and ffmpeg available in device (provided by g
         echo -e "${yellow}You don't have prerequisites available. Allow software to download it first...${e}"
         echo
         DownloadAndInstallPrereq
+        changeDirToDownload
         touch ytdlhaizi-softwareid
         echo
-        echo -e "${yellow}A software identifier has been made in your directory.${e}"
+        echo -e "${yellow}A software identifier has been made in your Downloads directory.${e}"
         echo -e "${red}DO NOT DELETE THIS FILE.${e}"
         echo -e "${yellow}This file works as an identifier if prerequisites has been installed in your device.${e}"
         echo -e "${yellow}Erasing this file can cause redundancy of installer and can take your precious storage space. Understood?${e}"
