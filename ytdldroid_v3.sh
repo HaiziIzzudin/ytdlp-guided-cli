@@ -17,7 +17,7 @@ BeforeDownloadRoutine () {
 }
 
 TypeNQualitySelectionSingleMedia () {
-    echo -e "${yellow}What kind of downloads do you want?\n\n[A] Audio Only\n[V] YouTube Video\n[N] Non-YouTube Video\n\nEnter neither will take you back to beginning.\n${e}"
+    echo -e "${yellow}What kind of downloads do you want?\n\n[A] Audio Only\n[V] YouTube Video\n[N] Non-YouTube Video\n\nEnter neither will exit the program.${e}"
     read -e -p "Pick Your Poison: " typeselection
 	
     if [ $typeselection = "A" ]; then
@@ -62,8 +62,8 @@ TypeNQualitySelectionSingleMedia () {
             DownloadsDoneMessage;
         fi
     else
-        echo "${red}\nNeither of options entered matched. Returning to beginning...${e}"
-        FirstTimeWizard;
+        echo "${red}\nNeither of options entered matched. Exiting...${e}"
+        exit;
     fi
 }
 
@@ -79,6 +79,7 @@ Header () {
     echo
 }
 
-FirstTimeWizard () { clear; Header; EnterYTLink; TypeNQualitySelectionSingleMedia; }
-
-FirstTimeWizard;
+clear; 
+Header; 
+EnterYTLink; 
+TypeNQualitySelectionSingleMedia;
