@@ -47,7 +47,7 @@ DownloadAndInstallPrereq () {
 
 
 # actual working program starts here...
-Clear
+clear
 echo -e "${green}====================================${e}"
 echo -e "${green}YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
 echo -e "${green}ANDROID VERSION 0.2a${e}"
