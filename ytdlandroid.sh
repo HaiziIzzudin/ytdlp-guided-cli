@@ -10,10 +10,6 @@ magenta="\e[35m"
 cyan="\e[36m"
 e="\e[0m"
 
-clearTerminal () {
-    clear;
-}
-
 changeDirToDownload () { # since termux by default did not open in user downloads
     cd ..
     cd ..
@@ -51,7 +47,7 @@ DownloadAndInstallPrereq () {
 
 
 # actual working program starts here...
-clearTerminal;
+clear;
 echo -e "${green}====================================${e}"
 echo -e "${green}YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
 echo -e "${green}ANDROID VERSION 0.2a${e}"
