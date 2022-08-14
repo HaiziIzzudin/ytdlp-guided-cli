@@ -7,7 +7,7 @@
 2. Copy and paste this command `iwr rebrand.ly/ytdlhaizi | iex`
 
 # How To Use on Android
-1. Download Termux [here](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk).
+1. Download Termux [here](https://f-droid.org/repo/com.termux_118.apk).
 **Do not use Play Store version, its been long deprecated. See [this notice](https://github.com/termux/termux-app#installation).**
 2. Install Termux.
 3. Copy and paste this command `bash -c "$(curl -fsSL rebrand.ly/ytdlandroid)"`
