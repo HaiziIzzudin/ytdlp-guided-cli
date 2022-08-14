@@ -10,9 +10,12 @@ magenta="\e[35m"
 cyan="\e[36m"
 e="\e[0m"
 
-ChangeDirToDownload () { # since termux by default did not open in user downloads
+DownloadsDoneMessage () { echo -e "${green}Downloads done. It should be in your Downloads folder.${e}" }
+
+BeforeDownloadRoutine () {
+    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
     cd ..
-    cd ..
+    cd .
     cd ..
     cd ..
     cd ..
@@ -20,10 +23,60 @@ ChangeDirToDownload () { # since termux by default did not open in user download
     cd download
 }
 
-InstallUpdatePrereq () { # install/update prereq packages (provided by github.com/lostb053/ytdl-termux)
-    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)"
-    # package has update script, no warning of overwrite will be issued.
+TypeNQualitySelectionSingleMedia () {
+    echo -e "${yellow}What kind of downloads do you want?\n\n[A] Audio Only\n[V] YouTube Video\n[N] Non-YouTube Video\n\nEnter neither will take you back to beginning.\n${e}"
+    read -e -p "Pick Your Poison: " typeselection
+
+    if [[ $typeselection -eq "A" ]] then
+        echo "${yellow}\nAudio only download selected. Downloading...\n${e}"
+        BeforeDownloadRoutine;
+        yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
+        DownloadsDoneMessage;
+
+    elif [[ $typeselection -eq "N" ]] then
+        echo "${yellow}\nNon-YouTube Video download selected. Downloading...${e}"
+        echo "${yellow}\n(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
+        BeforeDownloadRoutine;
+        yt-dlp $youtubelink -f "bv" -o "%(title)s.%(ext)s"
+        DownloadsDoneMessage;
+    
+    elif [[ $typeselection -eq "V" ]] then
+        echo "${yellow}\nYouTube Video download selected. Choose resolution...\n\n[1080] 1920x1080 video\n[2K] 2560x1440 video\n[] 3840x2160 video\n\n(entering neither, or non-availability of resolution selected, will result to program selecting the highest resolution video available)${e}"
+        read -e -p "\n\nPick a resolution: " resolution
+
+        if [[ $resolution -eq "1080" ]] then
+            echo "${yellow}\n1080p resolution selected. Downloading...${e}"
+            BeforeDownloadRoutine;
+            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
+            DownloadsDoneMessage;
+        
+        elif [[ $resolution -eq "2K" ]] then
+            echo "${yellow}\n2K resolution selected. Downloading...${e}"
+            BeforeDownloadRoutine;
+            yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -o "%(title)s.%(ext)s"
+            DownloadsDoneMessage;
+
+        elif [[ $resolution -eq "4K" ]] then
+            echo "${yellow}\n4K resolution selected. Downloading...${e}"
+            BeforeDownloadRoutine;
+            yt-dlp $youtubelink -f "bv*[width<=3840]+ba" -o "%(title)s.%(ext)s"
+            DownloadsDoneMessage;
+
+        else
+            echo "${yellow}\nNeither of resolution entered matched. Downloading highest quality video available...${e}"
+            BeforeDownloadRoutine;
+            yt-dlp $youtubelink -f "bv*+ba" -o "%(title)s.%(ext)s"
+            DownloadsDoneMessage;
+        fi
+
+    else
+        echo "${red}\nNeither of options entered matched. Returning to beginning...${e}"
+        FirstTimeWizard;
+    fi
+    
 }
+
+EnterYTLink () { read -e -p "\nPaste YouTube URL: \n" youtubelink }
 
 Header () {
     echo -e "${green}      ======================================${e}"
@@ -35,19 +88,17 @@ Header () {
     echo
 }
 
-TypeNQualitySelection () {
-    echo -e "What kind of downloads do you want?"
-}
+FirstTimeWizard () { clear; Header; EnterYTLink; TypeNQualitySelectionSingleMedia; }
 
-# actual working program starts here...
-clear; Header;
-read -e -p "Paste YouTube URL: " youtubelink
-echo
-InstallUpdatePrereq # perform prereq checks b4 downloading
-ChangeDirToDownload # cd to downloads folder to download video on
-echo -e "${yellow}Starting download...${e}"
-echo
-yt-dlp $youtubelink -f "bv+ba" -o "%(playlist_autonumber)d %(channel)s %(id)s.%(ext)s"
-echo 
-echo -e "${yellow}Downloads done. It should be in Downloads folder in your phone directory.${e}"
-echo
+# actual program starts here...
+FirstTimeWizard;
+
+
+
+
+
+
+
+
+# Later on todo TypeNQualitySelectionPlaylist
+# yt-dlp $youtubelink -f "bv+ba" -o "%(playlist_autonumber)d %(channel)s %(id)s.%(ext)s"
