@@ -2,7 +2,7 @@
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
 2. Copy and paste this command `iwr rebrand.ly/ytdlhaizi | iex`
 
-# How To Use on Windows 10 and below
+# How To Use on (Windows 10 ≤ x ≤ Windows 7)
 1. Open Windows Powershell
 2. Copy and paste this command `iwr rebrand.ly/ytdlhaizi | iex`
 
