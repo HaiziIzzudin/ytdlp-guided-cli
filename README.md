@@ -8,8 +8,8 @@
 
 
 # How To Use on Android
-1. Download Termux [here](github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk).
-**Do not use Play Store version, its been long deprecated. See [this issue](github.com/termux/termux-app#installation).**
+1. Download Termux [here](www.github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_arm64-v8a.apk).
+**Do not use Play Store version, its been long deprecated. See [this issue](www.github.com/termux/termux-app#installation).**
 2. Install Termux.
 3. Copy and paste this command `bash -c "$(curl -fsSL rebrand.ly/ytdlandroid)"`
 
