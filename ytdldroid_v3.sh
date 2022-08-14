@@ -17,57 +17,65 @@ BeforeDownloadRoutine () {
 }
 
 TypeNQualitySelectionSingleMedia () {
-    echo -e "${yellow}What kind of downloads do you want?\n\n[A] Audio Only\n[V] YouTube Video\n[N] Non-YouTube Video\n\nEnter neither will exit the program.${e}"
+    echo -e "${yellow}What kind of downloads do you want?${e}"
+    echo -e "${yellow}[A] Audio Only${e}"
+    echo -e "${yellow}[V] YouTube Video${e}"
+    echo -e "${yellow}[N] Non-YouTube Video${e}"
+    echo -e "${yellow}Enter neither will exit the program.${e}"
     read -e -p "Pick Your Poison: " typeselection
 	
     if [ "$typeselection" = "A" ]; then
-        echo "${yellow}\nAudio only download selected. Downloading...\n${e}"
+        echo "${yellow}Audio only download selected. Downloading...${e}"
         BeforeDownloadRoutine;
         yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
         DownloadsDoneMessage;
 		
     elif [ "$typeselection" = "N" ]; then
-        echo "${yellow}\nNon-YouTube Video download selected. Downloading...${e}"
-        echo "${yellow}\n(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
+        echo "${yellow}Non-YouTube Video download selected. Downloading...${e}"
+        echo "${yellow}(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
         BeforeDownloadRoutine;
         yt-dlp $youtubelink -f "bv" -o "%(title)s.%(ext)s"
         DownloadsDoneMessage;
 		
     elif [ "$typeselection" = "V" ]; then
-        echo "${yellow}\nYouTube Video download selected. Choose resolution...\n\n[1080] 1920x1080 video\n[2K] 2560x1440 video\n[] 3840x2160 video\n\n(entering neither, or non-availability of resolution selected, will result to program selecting the highest resolution video available)${e}"
-        read -e -p "\n\nPick a resolution: " resolution
+        echo "${yellow}YouTube Video download selected. Choose resolution...${e}"
+        echo "${yellow}[1080] 1920x1080 video${e}"
+        echo "${yellow}[2K] 2560x1440 video${e}"
+        echo "${yellow}[4K] 3840x2160 video${e}"
+        echo "${yellow}(entering neither, or non-availability of resolution selected, will result to program selecting the highest resolution video available)${e}"
+        read -e -p "Pick a resolution: " resolution
 		
         if [ "$resolution" = "1080" ]; then
-            echo "${yellow}\n1080p resolution selected. Downloading...${e}"
+            echo "${yellow}1080p resolution selected. Downloading...${e}"
             BeforeDownloadRoutine;
             yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage;
 			
         elif [ "$resolution" = "2K" ]; then
-            echo "${yellow}\n2K resolution selected. Downloading...${e}"
+            echo "${yellow}2K resolution selected. Downloading...${e}"
             BeforeDownloadRoutine;
             yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage;
 			
         elif [ "$resolution" = "4K" ]; then
-            echo "${yellow}\n4K resolution selected. Downloading...${e}"
+            echo "${yellow}4K resolution selected. Downloading...${e}"
             BeforeDownloadRoutine;
             yt-dlp $youtubelink -f "bv*[width<=3840]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage;
 			
         else
-            echo "${yellow}\nNeither of resolution entered matched. Downloading highest quality video available...${e}"
+            echo "${yellow}Neither of resolution entered matched. Downloading highest quality video available...${e}"
             BeforeDownloadRoutine;
             yt-dlp $youtubelink -f "bv*+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage;
         fi
     else
-        echo "${red}\nNeither of options entered matched. Exiting...${e}"
+        echo "${red}Neither of options entered matched. Exiting...${e}"
         exit;
     fi
 }
 
-EnterYTLink () { read -e -p "\nPaste YouTube URL: \n" youtubelink }
+EnterYTLink () { read -e -p "Paste YouTube URL: " youtubelink }
 
 Header () {
     echo -e "${green}      ======================================${e}"
