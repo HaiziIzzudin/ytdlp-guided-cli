@@ -26,13 +26,16 @@ CheckPrereq () { # check if yt-dlp and ffmpeg available in device (provided by g
         echo "Prerequisites file still exists. Proceeding to next step..."
     else 
         echo -e "${yellow}You don't have prerequisites available. Allow software to download it first...${e}"
+        echo
         DownloadAndInstallPrereq
         touch ytdlhaizi-softwareid
-        echo "${yellow}A software identifier has been made in your directory.${e}"
-        echo "${red}DO NOT DELETE THIS FILE.${e}"
-        echo "${yellow}This file works as an identifier if prerequisites has been installed in your device.${e}"
-        echo "${yellow}Erasing this file can cause redundancy of installer and can take your precious storage space. Understood?${e}"
-        read -p "Press enter to agree."
+        echo
+        echo -e "${yellow}A software identifier has been made in your directory.${e}"
+        echo -e "${red}DO NOT DELETE THIS FILE.${e}"
+        echo -e "${yellow}This file works as an identifier if prerequisites has been installed in your device.${e}"
+        echo -e "${yellow}Erasing this file can cause redundancy of installer and can take your precious storage space. Understood?${e}"
+        echo
+        read -p "Press enter to agree..."
     fi
 }
 
@@ -43,16 +46,23 @@ DownloadAndInstallPrereq () {
 
 
 # actual working program starts here...
-echo -e "${green}YOUTUBE DOWNLOADER BY HAIZI IZZUDIN: ANDROID VERSION 0.2a${e}"
-echo -e "${green}POWERED BY YT-DLP AND FFMPEG, MODULE INSTALLS BY github.com/lostb053${e}"
+echo -e "${green}====================================${e}"
+echo -e "${green}YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
+echo -e "${green}ANDROID VERSION 0.2a${e}"
+echo -e "${green}POWERED BY YT-DLP AND FFMPEG${e}"
+echo -e "${green}INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
+echo -e "${green}====================================${e}"
 echo 
-echo -e "${green}This program will download the best quality available to the /Downloads directory.${e}"
+echo -e "${green}This program will download the best quality available to your Downloads folder.${e}"
 echo 
 echo -e "${yellow}Enter YouTube URL:${e}"
 read youtubelink
+echo
 CheckPrereq # perform file checks b4 downloading
 changeDirToDownload # cd to downloads folder to download video to working dir
-echo 
+echo -e "${yellow}Starting download...${e}"
+echo
 yt-dlp $youtubelink -f "bv+ba"
 echo 
 echo -e "${yellow}Downloads done. It should be in Downloads folder in your phone directory.${e}"
+echo
