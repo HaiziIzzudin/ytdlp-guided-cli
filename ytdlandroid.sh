@@ -55,7 +55,7 @@ echo -e "${green}      ======================================${e}"
 echo 
 echo -e "${green}This program will download the best quality available to your Downloads folder.${e}"
 echo 
-echo -e "${yellow}Enter YouTube URL:${e}"
+echo -e "${yellow}Paste YouTube URL:${e}"
 read youtubelink
 echo
 CheckPrereq # perform file checks b4 downloading
