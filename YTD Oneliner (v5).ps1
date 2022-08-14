@@ -1,6 +1,6 @@
 # FUNCTIONS PRESETS
     
-    function Header {Write-Host "====== YOUTUBE DOWNLOADER ONE-LINER BY HAIZI IZZUDIN: $version ======" -ForegroundColor Green; Write-Host "===== Powered by yt-dlp and ffmpeg (BtBn) || Available on github =====" -ForegroundColor Green;}
+    function Header {Write-Host "=== YOUTUBE DOWNLOADER ONE-LINER BY HAIZI IZZUDIN: $version ==" -ForegroundColor Green; Write-Host "===== Powered by yt-dlp and ffmpeg (BtBn) || Available on github =====" -ForegroundColor Green;}
     
     function GotoFfmpeg {Set-Location ~\ffmpeg-master-latest-win64-gpl-shared\bin\;}
     
@@ -153,7 +153,7 @@ function DeletePrereq {Clear-Host; Header; Write-Host "`n`nDeleting prerequisite
 
 # Program actually starts here
 Clear-Host; Set-Location ~\;
-$version= "VERSION 5";
+$version= "VERSION 5.220814";
 Write-Host " __      ________________    _________ ________     _____  ___________" -ForegroundColor Green;
 Write-Host "/  \    /  \_   _____/   |   \_   ___ \\_____  \   /     \ \_   _____/" -ForegroundColor Green;
 Write-Host "\   \/\/   /|    __)_|   |   /    \  \/ /   |   \ /  \ /  \ |    __)_ " -ForegroundColor Green;
