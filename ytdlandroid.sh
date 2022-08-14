@@ -22,7 +22,7 @@ changeDirToDownload () { # since termux by default did not open in user download
 
 CheckPrereq () { # check if yt-dlp and ffmpeg available in device (provided by github.com/lostb053/ytdl-termux)
 
-    if [ -f "/sdcard/ytdlhaizi-softwareid" ]; then
+    if [ -f "/sdcard/download/ytdlhaizi-softwareid" ]; then
         echo "Prerequisites file still exists. Proceeding to next step..."
     else 
         echo -e "${yellow}You don't have prerequisites available. Allow software to download it first...${e}"
