@@ -16,7 +16,7 @@
 
 ### Changelogs
 - **Windows:** Many has changed. I recommend you to check the source code. I really proud of it (Changelogs is at the bottom).
-- **Android:** Its still barebones. You can only download video for now. More features catching up soon (with Windows version).
+- **Android:** Its still barebones. You can only download video for now. More features catching up with windows ver soon.
 
 _
 
