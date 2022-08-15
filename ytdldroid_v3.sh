@@ -1,6 +1,6 @@
 r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
 
-DownloadsDoneMessage () { 
+DownloadsDoneMessage () {
     echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"
     echo
     echo "Key in C to download more. Key in other to exit program."
@@ -10,8 +10,9 @@ DownloadsDoneMessage () {
     then # back to input yt url
         MainMenu
      
-     else # exit program
-        exit;
+    else # exit program
+        exit
+    fi
 }
 
 BeforeDownloadRoutine () {
