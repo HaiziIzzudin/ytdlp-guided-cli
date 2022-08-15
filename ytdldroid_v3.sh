@@ -120,8 +120,8 @@ MainMenu () {
 
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
 # randgen=$(( $RANDOM % 8999 + 1000 ));
-DLNaming="%(playlist_autonumber)d_%(channel)s_%(title)s.%(ext)s";
 clear;
+DLNaming="%(playlist_autonumber)d_%(channel)s_%(title)s.%(ext)s";
 MainMenu;
 
 
