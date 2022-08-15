@@ -125,7 +125,7 @@ MainMenu () {
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
 randgen=$(( $RANDOM % 8999 + 1000 ));
 clear;
-echo Session number "$randgen" (important because your video will be dropped in here);
+echo "Session number $randgen (important because your video will be dropped in here)";
 MainMenu;
 
 
