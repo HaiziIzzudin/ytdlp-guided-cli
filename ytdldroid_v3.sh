@@ -14,14 +14,14 @@ TypeNQualitySelectionSingleMedia () {
     echo -e "${y}Enter neither will bring you back to Main Menu${e}"
     read -e -p "Pick Your Poison: " typeselection
 	
-    if [ "$typeselection" =~ (A|a) ]
+    if [[ "$typeselection" =~ (A|a) ]]
     then
         echo -e "${y}Audio only download selected. Downloading...${e}"
         BeforeDownloadRoutine
         yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
         DownloadsDoneMessage
 		
-    elif [ "$typeselection" =~ (N|n) ]
+    elif [[ "$typeselection" =~ (N|n) ]]
     then
         echo -e "${y}Non-YouTube Video download selected. Downloading...${e}"
         echo -e "${y}(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
@@ -29,21 +29,21 @@ TypeNQualitySelectionSingleMedia () {
         yt-dlp $youtubelink -o "%(title)s.%(ext)s"
         DownloadsDoneMessage
 		
-    elif [ "$typeselection" =~ (V|v) ]
+    elif [[ "$typeselection" =~ (V|v) ]]
     then
         echo -e "${y}YouTube Video download selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
         echo -e "${y}(2K) 2560x1440 video${e}"
         echo -e "${y}(4K) 3840x2160 video${e}"
         read -e -p "Pick a resolution: " resolution
 		
-        if [ "$resolution" =~ (2K|2k) ]
+        if [[ "$resolution" =~ (2K|2k) ]]
         then
             echo -e "${y}2K resolution selected. Downloading...${e}"
             BeforeDownloadRoutine
             yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
 			
-        elif [ "$resolution" =~ (4K|4k) ]
+        elif [[ "$resolution" =~ (4K|4k) ]]
         then
             echo -e "${y}4K resolution selected. Downloading...${e}"
             BeforeDownloadRoutine
