@@ -19,14 +19,9 @@ DownloadsDoneMessage () {
 }
 
 BeforeDownloadRoutine () {
-    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";cd ..;cd ..;cd ..;cd ..;cd ..;cd sdcard;cd download;
-    if [[ -f "./$randgen" ]] #check if random number generator dir is available for use
-    then
-        cd $randgen
-    else 
-        mkdir ./$randgen
-        cd $randgen
-    fi
+    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
+    cd ..;cd ..;cd ..;cd ..;cd ..; # now you are in ROOT
+    cd sdcard;cd download;mkdir ./$randgen;cd $randgen; # if file already exists, mkdir will not create a new file.
 }
 
 OfferAV1 () {
@@ -125,7 +120,7 @@ MainMenu () {
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
 randgen=$(( $RANDOM % 8999 + 1000 ));
 clear;
-echo -e "Session number $randgen. This is important because your video will be dropped in here.";
+echo -e "Session number $randgen.";
 MainMenu;
 
 
