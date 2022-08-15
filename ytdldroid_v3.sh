@@ -7,11 +7,9 @@ BeforeDownloadRoutine () {
 }
 
 TypeNQualitySelectionSingleMedia () {
-    echo -e "${y}What kind of downloads do you want?${e}"
+    echo -e "${y}Please specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.${e}"
     echo -e "${y}(A) Audio Only${e}"
-    echo -e "${y}(V) YouTube Video${e}"
     echo -e "${y}(N) Non-YouTube Video${e}"
-    echo -e "${y}Enter neither will bring you back to Main Menu${e}"
     read -e -p "Pick Your Poison: " typeselection
 	
     if [[ "$typeselection" =~ (A|a) ]]
@@ -29,9 +27,8 @@ TypeNQualitySelectionSingleMedia () {
         yt-dlp $youtubelink -o "%(title)s.%(ext)s"
         DownloadsDoneMessage
 		
-    elif [[ "$typeselection" =~ (V|v) ]]
-    then
-        echo -e "${y}YouTube Video download selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
+    else
+        echo -e "${y}Defaults (YouTube Video) selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
         echo -e "${y}(2K) 2560x1440 video${e}"
         echo -e "${y}(4K) 3840x2160 video${e}"
         read -e -p "Pick a resolution: " resolution
@@ -56,9 +53,6 @@ TypeNQualitySelectionSingleMedia () {
             yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
         fi
-    else
-        echo -e "${r}Neither of options entered matched. Exiting to Main Menu...${e}"
-        MainMenu;
     fi
 }
 
