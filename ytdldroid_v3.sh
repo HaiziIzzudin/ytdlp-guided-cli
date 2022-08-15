@@ -12,7 +12,7 @@ TypeNQualitySelectionSingleMedia () {
     echo -e "${y}(V) YouTube Video${e}"
     echo -e "${y}(N) Non-YouTube Video${e}"
     echo -e "${y}Enter neither will exit the program.${e}"
-    read -e -p "Pick Your Poison: " typeselection
+    read -e -p "Pick Your Poison (CASE-SENSITIVE): " typeselection
 	
     if [ "$typeselection" = "A" ]
     then
@@ -26,26 +26,17 @@ TypeNQualitySelectionSingleMedia () {
         echo -e "${y}Non-YouTube Video download selected. Downloading...${e}"
         echo -e "${y}(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "bv" -o "%(title)s.%(ext)s"
+        yt-dlp $youtubelink -o "%(title)s.%(ext)s"
         DownloadsDoneMessage
 		
     elif [ "$typeselection" = "V" ]
     then
-        echo -e "${y}YouTube Video download selected. Choose resolution...${e}"
-        echo -e "${y}(1080) 1920x1080 video${e}"
+        echo -e "${y}YouTube Video download selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
         echo -e "${y}(2K) 2560x1440 video${e}"
         echo -e "${y}(4K) 3840x2160 video${e}"
-        echo -e "${y}(entering neither, or non-availability of resolution selected, will result to program selecting the highest resolution video available)${e}"
-        read -e -p "Pick a resolution: " resolution
+        read -e -p "Pick a resolution (CASE-SENSITIVE): " resolution
 		
-        if [ "$resolution" = "1080" ]
-        then
-            echo -e "${y}1080p resolution selected. Downloading...${e}"
-            BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
-            DownloadsDoneMessage
-			
-        elif [ "$resolution" = "2K" ]
+        if [ "$resolution" = "2K" ]
         then
             echo -e "${y}2K resolution selected. Downloading...${e}"
             BeforeDownloadRoutine
@@ -60,14 +51,14 @@ TypeNQualitySelectionSingleMedia () {
             DownloadsDoneMessage
 			
         else
-            echo -e "${y}Neither of resolution entered matched. Downloading highest quality video available...${e}"
+            echo -e "${y}Downloading defaults (1080p)${e}"
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*+ba" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
         fi
     else
         echo -e "${r}Neither of options entered matched. Exiting...${e}"
-        exit
+        exit;
     fi
 }
 
