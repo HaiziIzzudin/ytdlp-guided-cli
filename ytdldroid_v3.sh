@@ -20,7 +20,7 @@ TypeNQualitySelectionSingleMedia () {
         echo -e "${y}Audio only download selected. Downloading...${e}"
         BeforeDownloadRoutine
         yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
-        ffmpegvideotitle = yt-dlp -e $youtubelink
+        ffmpegvideotitle = yt-dlp -e "$youtubelink"
         ffmpeg -i "$titlepluswebm" -c:a aac -b:a 192k "$titleplusmp3" 
         DownloadsDoneMessage
         
