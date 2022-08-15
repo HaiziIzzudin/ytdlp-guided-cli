@@ -2,7 +2,7 @@ r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
 
 DownloadsDoneMessage () {
     echo
-    echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"
+    echo -e "${g}Downloads done. It should be in your Downloads/$randgen folder.${e}"
     echo
     echo "Key in C to download more. Key in other to exit program."
     read -e -p "Option: " continueorabort
@@ -10,6 +10,7 @@ DownloadsDoneMessage () {
 
     if [[ "$continueorabort" =~ (C|c) ]]
     then # back to input yt url
+        clear
         MainMenu
      
     else # exit program
@@ -114,13 +115,17 @@ MainMenu () {
     echo -e "${g}       POWERED BY YT-DLP, FFMPEG AND BASH${e}"
     echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
     echo -e "${g}      ======================================${e}"
+    echo -e "${y}       Your session number is "$randgen" ${e}"
+    echo
     read -e -p "Paste YouTube URL: " youtubelink
     echo
     TypeNQualitySelectionSingleMedia;
 }
 
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
-randgen=$(( $RANDOM % 9999 + 1000 ));echo Session number "$randgen";
+randgen=$(( $RANDOM % 8999 + 1000 ));
+clear;
+echo Session number "$randgen" (important because your video will be dropped in here);
 MainMenu;
 
 
