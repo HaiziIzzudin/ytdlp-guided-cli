@@ -1,4 +1,8 @@
-# My plans of this softwaare devs...
+# My plans of this software devs...
+
+<div id="all-os_combined-ww-monthly-202007-202207" width="600" height="400" style="width:600px; height: 400px;"></div><!-- You may change the values of width and height above to resize the chart --><p>Source: <a href="https://gs.statcounter.com/os-market-share#monthly-202007-202207">StatCounter Global Stats - OS Market Share</a></p><script type="text/javascript" src="https://www.statcounter.com/js/fusioncharts.js"></script><script type="text/javascript" src="https://gs.statcounter.com/chart.php?all-os_combined-ww-monthly-202007-202207&chartWidth=600"></script>
+
+
 I feel like windows version has finished. I mean you have the basic features, just I will only do bug fix. What I will add more features is on android (termux) side. Due to OS market share most of them is on Android, therefore I will focus on android development. I still allow receiving bugfix. Feel free to issue it.
 
 # How To Use on Windows 11
