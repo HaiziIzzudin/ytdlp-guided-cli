@@ -1,10 +1,12 @@
 r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
 
 DownloadsDoneMessage () {
+    echo
     echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"
     echo
     echo "Key in C to download more. Key in other to exit program."
     read -e -p "Option: " continueorabort
+    echo
 
     if [[ "$continueorabort" =~ (C|c) ]]
     then # back to input yt url
@@ -20,16 +22,20 @@ BeforeDownloadRoutine () {
 }
 
 OfferAV1 () {
+    echo
     echo -e "${y}Do you want to download this resolution in AV1 codec?${e}"
     echo -e "${y}AV1 codec offers higher quality for a smaller file size. The downside is that you need a powerful CPU to decode AV1 video, and many devices still lacks support of AV1 decoding engine.${e}"
     echo
     read -e -p "Type 'Y' to proceed. Leave others/blank to reject: " wantav1
+    echo
 }
 
 TypeNQualitySelectionSingleMedia () {
+    echo
     echo -e "${y}Please specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.${e}"
     echo -e "${y}(A) Audio Only${e}"
     echo -e "${y}(N) Non-YouTube Video${e}"
+    echo
     read -e -p "Pick Your Poison: " typeselection
 	
     if [[ "$typeselection" =~ (A|a) ]]
@@ -44,6 +50,7 @@ TypeNQualitySelectionSingleMedia () {
 
 
     else # if leaving others/blank...
+        echo
         echo -e "${y}Defaults (YouTube Video) selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
         echo
         echo -e "${y}(2K) 2560x1440 video${e}"
@@ -96,11 +103,12 @@ MainMenu () {
     clear;
     echo -e "${g}      ======================================${e}"
     echo -e "${g}       YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
-    echo -e "${g}       ANDROID VERSION 0.2a${e}"
-    echo -e "${g}       POWERED BY YT-DLP AND FFMPEG${e}"
+    echo -e "${g}       ANDROID RELEASE CANDIDATE VERSION 3${e}"
+    echo -e "${g}       POWERED BY YT-DLP, FFMPEG AND BASH${e}"
     echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
     echo -e "${g}      ======================================${e}"
     read -e -p "Paste YouTube URL: " youtubelink
+    echo
     TypeNQualitySelectionSingleMedia;
 }
 
