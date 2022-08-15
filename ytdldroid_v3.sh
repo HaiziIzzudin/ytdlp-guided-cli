@@ -21,7 +21,7 @@ DownloadsDoneMessage () {
 BeforeDownloadRoutine () {
     bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
     cd ..;cd ..;cd ..;cd ..;cd ..; # now you are in ROOT
-    cd sdcard;cd download;mkdir ./$randgen;cd $randgen; # if file already exists, mkdir will not create a new file.
+    cd sdcard;cd download;mkdir "./$randgen";cd $randgen; # if file already exists, mkdir will not create a new file.
 }
 
 OfferAV1 () {
@@ -110,7 +110,7 @@ MainMenu () {
     echo -e "${g}       POWERED BY YT-DLP, FFMPEG AND BASH${e}"
     echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
     echo -e "${g}      ======================================${e}"
-    echo -e "${y}       Your session number is $randgen ${e}"
+    echo -e "${y}       Session started $randgen ${e}"
     echo
     read -e -p "Paste YouTube URL: " youtubelink
     echo
@@ -118,9 +118,9 @@ MainMenu () {
 }
 
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
-randgen=$(( $RANDOM % 8999 + 1000 ));
+# randgen=$(( $RANDOM % 8999 + 1000 ));
+randgen=date;
 clear;
-echo -e "Session number $randgen.";
 MainMenu;
 
 
