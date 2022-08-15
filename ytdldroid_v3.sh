@@ -26,25 +26,45 @@ TypeNQualitySelectionSingleMedia () {
 		
     else
         echo -e "${y}Defaults (YouTube Video) selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.${e}"
-        echo -e "${y}(2K) 2560x1440 video${e}"
-        echo -e "${y}(4K) 3840x2160 video${e}"
+        echo
+        echo "AV1 offers better video compression quality for a cost of your CPU resources. DO NOT PICK THIS if your phone did not have AV1 decode capabilities."
+        echo -e "${y}(2V1) 2560x1440 AV1 video${e}"
+        echo -e "${y}(4V1) 3840x2160 AV1 video${e}"
+        echo
+        echo "VP9 has lower compression quality in a cost of a lower cpu usage. Recommended because its a common codec widely adopted by media players."
+        echo -e "${y}(2P9) 2560x1440 VP9 video${e}"
+        echo -e "${y}(4P9) 3840x2160 VP9 video${e}"
         read -e -p "Pick a resolution: " resolution
 		
-        if [[ "$resolution" =~ (2K|2k) ]]
+        if [[ "$resolution" =~ (2V1|2v1) ]]
         then # Download 2k resolution av1 video
             BeforeDownloadRoutine
             yt-dlp $youtubelink -S "res:1440,vcodec:av1"
             DownloadsDoneMessage
 			
-        elif [[ "$resolution" =~ (4K|4k) ]]
+        elif [[ "$resolution" =~ (4V1|4v1) ]]
         then # Download 4k resolution av1 video
             BeforeDownloadRoutine
             yt-dlp $youtubelink -S "res:2160,vcodec:av1"
             DownloadsDoneMessage
 			
-        else # Download 1080p resolution av1 video
+        
+        elif [[ "$resolution" =~ (2P9|2p9) ]]
+        then # Download 4k resolution vp9 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -S "res:1080,vcodec:av1"
+            yt-dlp $youtubelink -S "res:1440,vcodec:vp9"
+            DownloadsDoneMessage
+
+        elif [[ "$resolution" =~ (4p9|4P9) ]]
+        then # Download 4k resolution vp9 video
+            BeforeDownloadRoutine
+            yt-dlp $youtubelink -S "res:2160,vcodec:vp9"
+            DownloadsDoneMessage
+
+        
+        else # Download 1080p resolution h264 video
+            BeforeDownloadRoutine
+            yt-dlp $youtubelink -S "res:1080,vcodec:h264"
             DownloadsDoneMessage
         fi
     fi
