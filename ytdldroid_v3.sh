@@ -115,7 +115,7 @@ MainMenu () {
     echo -e "${g}       POWERED BY YT-DLP, FFMPEG AND BASH${e}"
     echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
     echo -e "${g}      ======================================${e}"
-    echo -e "${y}       Your session number is "$randgen" ${e}"
+    echo -e "${y}       Your session number is $randgen ${e}"
     echo
     read -e -p "Paste YouTube URL: " youtubelink
     echo
@@ -125,7 +125,7 @@ MainMenu () {
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
 randgen=$(( $RANDOM % 8999 + 1000 ));
 clear;
-echo "Session number $randgen (important because your video will be dropped in here)";
+echo -e "Session number $randgen. This is important because your video will be dropped in here.";
 MainMenu;
 
 
