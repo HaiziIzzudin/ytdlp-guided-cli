@@ -1,7 +1,4 @@
 r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
-downloadpath=/sdcard/download # path to downloads folder
-webmextstring = ".webm"; mp3extstring = ".mp3"; # extensions
-titlepluswebm = "$ffmpegvideotitle$webmextstring"; titleplusmp3 = "$ffmpegvideotitle$mp3extstring"; # title+extensions
 
 DownloadsDoneMessage () { echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"; }
 
@@ -16,18 +13,13 @@ TypeNQualitySelectionSingleMedia () {
     read -e -p "Pick Your Poison: " typeselection
 	
     if [[ "$typeselection" =~ (A|a) ]]
-    then
-        echo -e "${y}Audio only download selected. Downloading...${e}"
+    then # Download audio only
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
-        ffmpegvideotitle = yt-dlp -e "$youtubelink"
-        ffmpeg -i "$titlepluswebm" -c:a aac -b:a 192k "$titleplusmp3" 
+        yt-dlp $youtubelink -f "ba" -o "%(title)s.mp3"
         DownloadsDoneMessage
         
     elif [[ "$typeselection" =~ (N|n) ]]
-    then
-        echo -e "${y}Non-YouTube Video download selected. Downloading...${e}"
-        echo -e "${y}(By default, this will download in highest quality, due to most non video centric website usually stream 720p max)${e}"
+    then # Download max quality due to these platform dont separate video and audio.
         BeforeDownloadRoutine
         yt-dlp $youtubelink -o "%(title)s.%(ext)s"
         DownloadsDoneMessage
@@ -39,23 +31,20 @@ TypeNQualitySelectionSingleMedia () {
         read -e -p "Pick a resolution: " resolution
 		
         if [[ "$resolution" =~ (2K|2k) ]]
-        then
-            echo -e "${y}2K resolution selected. Downloading...${e}"
+        then # Download 2k resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
 			
         elif [[ "$resolution" =~ (4K|4k) ]]
-        then
-            echo -e "${y}4K resolution selected. Downloading...${e}"
+        then # Download 4k resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=3840]+ba" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -f "bv*[width<=3840]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
 			
-        else
-            echo -e "${y}Downloading defaults (1080p)${e}"
+        else # Download 1080p resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
             DownloadsDoneMessage
         fi
     fi
