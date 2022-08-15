@@ -23,7 +23,7 @@ I feel like windows version has finished. I mean you have the basic features, ju
 
 ### Changelogs
 - **Windows:** Many has changed. I recommend you to check the source code. I really proud of it (Changelogs is at the bottom).
-- **Android:** Its still barebones. You can only download video for now. More features catching up with windows ver soon.
+- **Android:** You can now choose quality between 1080p, 2k and 4k, and have an offer for downloading in AV1 (AV1 decode is supported on select devices).
 
 ***Disclaimer: All rebrand.ly links is linked to the raw script inside this GitHub. No outside script were used. Don't believe me? Enter the rebrand.ly links into your browser then. It must have a domain name and TLD "raw.githubusercontent.com/..."***
 
