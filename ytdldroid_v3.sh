@@ -1,4 +1,7 @@
-r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m" # color presets
+r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
+downloadpath=/sdcard/download # path to downloads folder
+webmextstring = ".webm"; mp3extstring = ".mp3"; # extensions
+titlepluswebm = "$ffmpegvideotitle$webmextstring"; titleplusmp3 = "$ffmpegvideotitle$mp3extstring"; # title+extensions
 
 DownloadsDoneMessage () { echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"; }
 
@@ -17,8 +20,10 @@ TypeNQualitySelectionSingleMedia () {
         echo -e "${y}Audio only download selected. Downloading...${e}"
         BeforeDownloadRoutine
         yt-dlp $youtubelink -f "ba" -o "%(title)s.%(ext)s"
+        ffmpegvideotitle = yt-dlp -e $youtubelink
+        ffmpeg -i "$titlepluswebm" -c:a aac -b:a 192k "$titleplusmp3" 
         DownloadsDoneMessage
-		
+        
     elif [[ "$typeselection" =~ (N|n) ]]
     then
         echo -e "${y}Non-YouTube Video download selected. Downloading...${e}"
@@ -69,3 +74,4 @@ MainMenu () {
 }
 
 MainMenu;
+
