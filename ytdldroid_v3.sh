@@ -15,13 +15,13 @@ TypeNQualitySelectionSingleMedia () {
     if [[ "$typeselection" =~ (A|a) ]]
     then # Download audio only
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "ba" -o "%(title)s.mp3"
+        yt-dlp $youtubelink -f "ba" --recode-video mp3
         DownloadsDoneMessage
         
     elif [[ "$typeselection" =~ (N|n) ]]
     then # Download max quality due to these platform dont separate video and audio.
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -o "%(title)s.%(ext)s"
+        yt-dlp $youtubelink
         DownloadsDoneMessage
 		
     else
@@ -33,18 +33,18 @@ TypeNQualitySelectionSingleMedia () {
         if [[ "$resolution" =~ (2K|2k) ]]
         then # Download 2k resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=2560]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -S "res:1440,vcodec:av1"
             DownloadsDoneMessage
 			
         elif [[ "$resolution" =~ (4K|4k) ]]
         then # Download 4k resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=3840]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -S "res:2160,vcodec:av1"
             DownloadsDoneMessage
 			
         else # Download 1080p resolution av1 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -f "bv*[width<=1920]+ba" -S "vcodec:av01" -o "%(title)s.%(ext)s"
+            yt-dlp $youtubelink -S "res:1080,vcodec:av1"
             DownloadsDoneMessage
         fi
     fi
