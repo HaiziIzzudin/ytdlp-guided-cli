@@ -1,4 +1,5 @@
-# DEVELOPMENT PAUSED BCOS I WANT TO STUDY OKAY, CHEERS.
+# My plans of this softwaare devs...
+I feel like windows version has finished. I mean you have the basic features, just I will only do bug fix. What I will add more features is on android (termux) side. Due to OS market share most of them is on Android, therefore I will focus on android development. I still allow receiving bugfix. Feel free to issue it.
 
 # How To Use on Windows 11
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
