@@ -2,7 +2,7 @@ r="\e[31m"; g="\e[32m"; y="\e[33m"; e="\e[0m"; # color presets
 
 DownloadsDoneMessage () {
     echo
-    echo -e "${g}Downloads done. It should be in your Downloads/$randgen folder.${e}"
+    echo -e "${g}Downloads done. It should be in your Downloads folder.${e}"
     echo
     echo "Key in C to download more. Key in other to exit program."
     read -e -p "Option: " continueorabort
@@ -21,7 +21,8 @@ DownloadsDoneMessage () {
 BeforeDownloadRoutine () {
     bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";
     cd ..;cd ..;cd ..;cd ..;cd ..; # now you are in ROOT
-    cd sdcard;cd download;mkdir "./$randgen";cd $randgen; # if file already exists, mkdir will not create a new file.
+    cd sdcard;cd download;
+    # mkdir "./$randgen";cd $randgen; # if file already exists, mkdir will not create a new file.
 }
 
 OfferAV1 () {
@@ -32,6 +33,8 @@ OfferAV1 () {
     read -e -p "Type 'Y' to proceed. Leave others/blank to reject: " wantav1
     echo
 }
+
+$DLNaming="%(playlist_autonumber)d.%(channel)s.%(title)s.%(ext)s"
 
 TypeNQualitySelectionSingleMedia () {
     echo
@@ -69,11 +72,11 @@ TypeNQualitySelectionSingleMedia () {
             if [[ "$wantav1" =~ (Y|y) ]]
             then
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:1440,vcodec:av1" 
+                yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming
             
             else
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:1440,vcodec:vp9"
+                yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming
             
             fi
 
@@ -85,17 +88,17 @@ TypeNQualitySelectionSingleMedia () {
             if [[ "$wantav1" =~ (Y|y) ]]
             then
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:2160,vcodec:av1"
+                yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming
 
             else
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:2160,vcodec:vp9"
+                yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming
             
             fi
 
         else # Defaulted 1080p resolution h264 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -S "res:1080,vcodec:h264"
+            yt-dlp $youtubelink -S "res:1080,vcodec:h264" -o $DLNaming
         
         fi
     fi
@@ -110,7 +113,7 @@ MainMenu () {
     echo -e "${g}       POWERED BY YT-DLP, FFMPEG AND BASH${e}"
     echo -e "${g}       INSTALL SCRIPT BY lostb053 ON GITHUB${e}"
     echo -e "${g}      ======================================${e}"
-    echo -e "${y}       Session started $randgen ${e}"
+    # echo -e "${y}       Session started $randgen ${e}"
     echo
     read -e -p "Paste YouTube URL: " youtubelink
     echo
@@ -119,7 +122,6 @@ MainMenu () {
 
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
 # randgen=$(( $RANDOM % 8999 + 1000 ));
-randgen=date;
 clear;
 MainMenu;
 
