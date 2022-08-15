@@ -18,7 +18,14 @@ DownloadsDoneMessage () {
 }
 
 BeforeDownloadRoutine () {
-    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)"; cd ..; cd ..; cd ..; cd ..; cd ..; cd sdcard; cd download;
+    bash -c "$(curl -fsSL https://bit.ly/install-ytdl-termux)";cd ..;cd ..;cd ..;cd ..;cd ..;cd sdcard;cd download;
+    if [[ -f "./$randgen" ]] #check if random number generator dir is available for use
+    then
+        cd $randgen
+    else 
+        mkdir ./$randgen
+        cd $randgen
+    fi
 }
 
 OfferAV1 () {
@@ -41,7 +48,7 @@ TypeNQualitySelectionSingleMedia () {
     if [[ "$typeselection" =~ (A|a) ]]
     then # Download audio only
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "ba" --recode-video mp3
+        yt-dlp $youtubelink -f "ba" --recode-video mp3 
         
     elif [[ "$typeselection" =~ (N|n) ]]
     then # Download max quality due to these platform dont separate video and audio.
@@ -66,7 +73,7 @@ TypeNQualitySelectionSingleMedia () {
             if [[ "$wantav1" =~ (Y|y) ]]
             then
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:1440,vcodec:av1"
+                yt-dlp $youtubelink -S "res:1440,vcodec:av1" 
             
             else
                 BeforeDownloadRoutine
@@ -100,7 +107,7 @@ TypeNQualitySelectionSingleMedia () {
 }
 
 MainMenu () {
-    clear;
+    echo
     echo -e "${g}      ======================================${e}"
     echo -e "${g}       YOUTUBE DOWNLOADER BY HAIZI IZZUDIN${e}"
     echo -e "${g}       ANDROID RELEASE CANDIDATE VERSION 3${e}"
@@ -112,5 +119,8 @@ MainMenu () {
     TypeNQualitySelectionSingleMedia;
 }
 
+# reminder to not have spaces between variable and dollar sign. Else command will fail.
+randgen=$(( $RANDOM % 9999 + 1000 ));echo Session number "$randgen";
 MainMenu;
+
 
