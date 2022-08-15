@@ -34,7 +34,7 @@ OfferAV1 () {
     echo
 }
 
-$DLNaming="%(playlist_autonumber)d.%(channel)s.%(title)s.%(ext)s"
+$DLNaming="%(playlist_autonumber)d_%(channel)s_%(title)s.%(ext)s"
 
 TypeNQualitySelectionSingleMedia () {
     echo
@@ -47,7 +47,7 @@ TypeNQualitySelectionSingleMedia () {
     if [[ "$typeselection" =~ (A|a) ]]
     then # Download audio only
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "ba" --recode-video mp3 
+        yt-dlp $youtubelink -f "ba" --recode-video mp3 -o "$DLNaming"
         
     elif [[ "$typeselection" =~ (N|n) ]]
     then # Download max quality due to these platform dont separate video and audio.
@@ -72,11 +72,11 @@ TypeNQualitySelectionSingleMedia () {
             if [[ "$wantav1" =~ (Y|y) ]]
             then
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming
+                yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o "$DLNaming"
             
             else
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming
+                yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o "$DLNaming"
             
             fi
 
@@ -88,17 +88,17 @@ TypeNQualitySelectionSingleMedia () {
             if [[ "$wantav1" =~ (Y|y) ]]
             then
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming
+                yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o "$DLNaming"
 
             else
                 BeforeDownloadRoutine
-                yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming
+                yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o "$DLNaming"
             
             fi
 
         else # Defaulted 1080p resolution h264 video
             BeforeDownloadRoutine
-            yt-dlp $youtubelink -S "res:1080,vcodec:h264" -o $DLNaming
+            yt-dlp $youtubelink -S "res:1080,vcodec:h264" -o "$DLNaming"
         
         fi
     fi
