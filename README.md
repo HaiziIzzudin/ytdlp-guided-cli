@@ -1,3 +1,5 @@
+# DEVELOPMENT PAUSED BCOS I WANT TO STUDY OKAY, CHEERS.
+
 # How To Use on Windows 11
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
 2. Copy and paste this command `iwr rebrand.ly/ytdlhaizi | iex`
