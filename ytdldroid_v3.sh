@@ -45,7 +45,7 @@ TypeNQualitySelectionSingleMedia () {
     if [[ "$typeselection" =~ (A|a) ]]
     then # Download audio only
         BeforeDownloadRoutine
-        yt-dlp $youtubelink -f "ba" --recode-video mp3
+        yt-dlp $youtubelink -f "ba" --recode-video mp3 -o ""$DLNaming""
         
     elif [[ "$typeselection" =~ (N|n) ]]
     then # Download max quality due to these platform dont separate video and audio.
