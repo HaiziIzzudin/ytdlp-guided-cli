@@ -48,11 +48,11 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming;
             }
         }
         elseif ($typeselection -eq "4K") {
@@ -60,11 +60,11 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming;
             }
         }
         else {
@@ -109,69 +109,6 @@ function BeforeDownloadRoutine {
         Invoke-WebRequest -Uri https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe -OutFile .\yt-dlp.exe;
         #Downloaded yt-dlp.exe in the ffmpeg\bin folder
         Write-Host "`nPrerequisites downloads done!" -ForegroundColor Green;
-    }
-}
-
-
-
-function EncodeMp4 {Clear-Host; Header; Write-Host "`nMP4 is a standard video format which is used by technology equipment to display video. This function will allow you to encode WEBM VP9 format to MP4 H264.`n`nShould I encode my downloaded video?`nYour modern device nowadays may have supported playback of WEBM VP9 (either via Software Decoding or dedicated media engine). However, if you planning to view this media on older devices (2014 and below), I recommend you to encode your media to MP4 for better compatibility.`n`nHow does it work?`nThis program will use FFMPEG to encode video with a *.webm extension using the best preset.`n`nThese process will tank your resources, so sit back and relax. This process can get faster if your CPU has higher spec. Please consider using a more powerful computer available for this process.`n`nDo note that libx264 compression yiels to a bigger size and lower quality compression due to its old technology."; $ConfirmEncode= Read-Host -Prompt "`nProceed to encode media?   [Y] Yes     [other_key_input] No";
-
-    if ($ConfirmEncode -ne "Y") {
-        Write-host "User has cancelled encoding. Returning to main menu..." -ForegroundColor Red; Sleeping; Clear-Host; MainMenu;
-    }
-    else { # else (if) user enters "Y", go to check for webm
-        GotoYTFolder; #cd to YTDownloads folder for checking webm files
-	    
-        if ((Test-Path -Path *.webm) -eq $False) { # if there's no webm file, program will return to MainMenu
-		    Write-Host "There is no .webm file in the folder. Returning to main menu..." -ForegroundColor Yellow; Sleeping; Clear-Host; MainMenu;
-	    }
-	    else { #else if THERE IS webm files, we can start checking prereq, and start encoding
-		    CheckPrereq; Clear-Host; GotoYTFolder; $originalVids = Get-ChildItem *.webm -Recurse;
-		    		    
-            foreach ($inputVid in $originalVids) { 
-			    $outputVid = [io.path]::ChangeExtension($inputVid.FullName, '.mp4'); # setting output vid and extensions
-			    ~\ffmpeg-master-latest-win64-gpl-shared\bin\ffmpeg -i $inputVid.FullName -c:v libx264 -preset ultrafast -crf 30 -pix_fmt yuv420p -g 60 -c:a aac -b:a 128k $outputVid; # ffmpeg command
-		    }
-		
-            Write-host "`n`nEncoding has finished!`nYou can view the output in the 'YouTube Downloads' Folder.`n`nDo you want to delete original WEBM video?`n`n[N] ALL WEBM video will be moved to 'WEBM' folder inside 'YouTube Downloads' folder`n[Y] WARNING! ALL FILES with WEBM extensions will be deleted. If you plan to keep some of them, please move it outside 'YouTube Downloads' folder.`n[other_key] Cancel operations (WEBM and MP4 will be kept mixed inside 'YouTube Downloads' directory." -ForegroundColor Yellow; $DeleteWebm= Read-Host -Prompt "Options";
-            
-            if ($DeleteWebm -eq "N") {
-        	    Write-Host "`n`nMoving all WEBM files to new directory..." -ForegroundColor Yellow;
-                
-                if ((Test-Path -Path ~\Desktop\YouTube_Downloads\WEBM\) -eq $True) {
-            	    GotoYTFolder;
-                    Move-Item -Path .\*.webm -Destination ~\Desktop\YouTube_Downloads\WEBM\;
-                }
-                else {
-                    GotoYTFolder;
-                    New-Item -ItemType 'Directory' -Name "WEBM";
-    			    Move-Item -Path .\*.webm -Destination ~\Desktop\YouTube_Downloads\WEBM;
-           	    }
-
-            Write-Host "Moving webm video done! Returning to Main Menu..." -ForegroundColor Green; Sleeping; Clear-Host; MainMenu;
-            }
-
-            elseif ($DeleteWebm -eq "Y") {
-        	    GotoYTFolder;
-                Write-Host "`n`nDeleting..." -ForegroundColor Red;
-                Remove-Item -Path .\*.webm
-                Write-Host "`n`nDeletion complete. Returning to Main Menu..." -ForegroundColor Yellow; Sleeping; Clear-Host; MainMenu;
-            }
-        
-            else {
-                Write-Host "`n`nOperation Cancelled. Returning to Main Menu..." -ForegroundColor Green; 
-                Sleeping; Clear-Host; MainMenu;
-            }
-        }
-    }
-} # EncodeMp4 function brackets do not delete
-
-function DeletePrereq {Clear-Host; Header; Write-Host "`n`nDeleting prerequisites..." -ForegroundColor Yellow
-    if ((Test-Path -Path "~\ffmpeg.zip") -eq $True) {
-        Set-Location ..; Set-Location ..; Remove-Item "~\ffmpeg.zip" -Recurse -Force; Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force; Write-Host "`nPrerequisites file successfully deleted." -ForegroundColor Green; Sleeping; Clear-Host; MainMenu;
-    }
-	else {
-        Clear-Host; Header; Write-Host "`nFile has already been deleted." -ForegroundColor Green; Sleeping; Clear-Host; MainMenu;
     }
 }
 
