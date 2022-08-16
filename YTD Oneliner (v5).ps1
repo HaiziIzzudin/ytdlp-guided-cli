@@ -10,56 +10,81 @@
 
     $ResolutionDisclaimer= "Downloading $type video on highest quality...`nRemind ya that if the video don't have $type resolution, it will choose the highest quality available.`n`n"
     
-    $DLNaming= "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(channel)s %(id)s.%(ext)s"
+    $DLNaming= "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d_%(channel)s_%(title)s.%(ext)s"
 
 
 # FUNCTION ACTIONS
 
-function MainMenu {Set-Location ~\; Header; Write-Host "`nWhere do you want to go today?`n[D] Download YouTube Video/Audio`n[R] Remove prerequisites`n[E] Encode media to mp4 for better compatibility`n`n(Enter neither of the option will exit the program)" -ForegroundColor Yellow;
-$Action= Read-Host -Prompt "`nChoose Option";
-	if ($Action -eq "D") {DownloadNow;}
-	elseif ($Action -eq "R") {DeletePrereq;}
-    elseif ($Action -eq "E") {EncodeMp4;}
-	else {Exit;}
+# new mainmenu will directly greet you with inserting youtube url
+function MainMenu {Set-Location ~\; 
+    Header; 
+    $ytlink= Read-Host -Prompt "`nPaste YouTube URL";
+	DownloadNow;
 }
 
 function DownloadNow { # define function to download section
-    Clear-Host; Header; # clear terminal and output Header
-    $ytlink= Read-Host -Prompt "`nEnter YouTube URL"; # User enter youtube url
-    Write-Host "`nWhat kind of download do you want?`n`n" -ForegroundColor Green; # User chooses type
-    Write-Host "[A] Audio/Music (mp3)`n[720] 720p Video`n[1080] 1080p Video`n[2K] 1440p Video`n[4K] 3840p Video" -ForegroundColor Green;
-    Write-Host "`n`nEnter neither of the character to exit to main menu." -ForegroundColor Yellow;
-    $type= Read-Host -Prompt "Enter type of download";
+    Write-Host ""
+    Write-Host "`nPlease specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.`n`n" -ForegroundColor Green; # User chooses type
+    Write-Host "[A] Audio only (mp3)`n[N] Non-YouTube Video" -ForegroundColor Green;
+    $typeselection= Read-Host -Prompt "`n`nEnter type of download";
         
-    if ($type -eq "A") {
-        CheckPrereq;
+    if ($typeselection -eq "A") {
+        BeforeDownloadRoutine;
         Write-Host "Downloading Audio Only on highest quality...";
-        ./yt-dlp $ytlink -f "ba" -o $DLNaming;
+        ./yt-dlp $ytlink -f "ba" --recode-video mp3 -o $DLNaming;
     }
-    elseif ($type -eq "720") {
-        CheckPrereq;
-        Write-Host "Downloading 720p video on highest quality...";
-        ./yt-dlp $ytlink -f "bv*[width=1280]+ba" -o $DLNaming;
-    }
-    elseif ($type -eq "1080") {
-        CheckPrereq;
-        Write-Host "$ResolutionDisclaimer" -ForegroundColor Yellow;
-        ./yt-dlp $ytlink -f "bv*[width<=1920]+ba" -o $DLNaming;
-    }
-    elseif ($type -eq "2K") {
-        CheckPrereq;
-        Write-Host "$ResolutionDisclaimer" -ForegroundColor Yellow;
-        ./yt-dlp $ytlink -f "bv*[width<=2560]+ba" -o $DLNaming;
-    }
-    elseif ($type -eq "4K") {
-        CheckPrereq;
-        Write-Host "$ResolutionDisclaimer" -ForegroundColor Yellow;
-        ./yt-dlp $ytlink -f "bv*[width<=3840]+ba" -o $DLNaming;
+    elseif ($typeselection -eq "N") {
+        BeforeDownloadRoutine;
+        Write-Host "Downloading Non-YouTube video...";
+        ./yt-dlp $ytlink
     }
     else {
-        Write-Host "`nInvalid character received. Returning to main menu..."; Sleeping;
+        Write-Host "`nDefaults (YouTube Video) selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.";
+        Write-Host "`n[2K] 2560x1440 resolution video`n[4K] 3840x2160 resolution video";
+        $typeselection= Read-Host -Prompt "`n`nPick a resolution";
+
+        if ($typeselection -eq "2K") {
+            OfferAV1;
+            
+            if ($wantav1 -eq "Y") {
+                BeforeDownloadRoutine;
+                yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming;
+            }
+            else {
+                BeforeDownloadRoutine;
+                yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming;
+            }
+        }
+        elseif ($typeselection -eq "4K") {
+            OfferAV1;
+            
+            if ($wantav1 -eq "Y") {
+                BeforeDownloadRoutine;
+                yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming;
+            }
+            else {
+                BeforeDownloadRoutine;
+                yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming;
+            }
+        }
+        else {
+            BeforeDownloadRoutine;
+            ./yt-dlp $ytlink -S "res:1080,vcodec:h264" -o $DLNaming;
+        }
     }
-    
+    DonwloadDone;
+}
+
+function OfferAV1 () {
+    Write-Host ""
+    Write-Host "Do you want to download this resolution in AV1 codec?"
+    Write-Host "AV1 codec offers higher quality for a smaller file size. The downside is that you need a powerful CPU to decode AV1 video, and many devices still lacks support of AV1 decoding engine."
+    Write-Host ""
+    $wantav1= Read-Host -Prompt "`n`nType 'Y' to proceed. Leave others/blank to reject";
+    Write-Host ""
+}
+
+function DonwloadDone () {
     Write-Host "`n`n`nDownload done! Video is available in Desktop\YouTube_Downloader\`n" -ForegroundColor Green;
     $returnhome= Read-Host -Prompt "[O] Show in Folder     [other_key] Return to Main Menu";
     if ($returnhome -eq "O") {
@@ -69,10 +94,9 @@ function DownloadNow { # define function to download section
     else {
         Clear-Host; MainMenu;
     }
-    
 }
 
-function CheckPrereq {
+function BeforeDownloadRoutine {
     Write-Host "`n`nChecking prerequisites..." -ForegroundColor Yellow
     if ((Test-Path -Path "~\ffmpeg.zip") -eq $True) {
         Write-Host "`nYou already have the file required.`n" -ForegroundColor Green; GotoFfmpeg; 
@@ -153,7 +177,7 @@ function DeletePrereq {Clear-Host; Header; Write-Host "`n`nDeleting prerequisite
 
 # Program actually starts here
 Clear-Host; Set-Location ~\;
-$version= "VERSION 5.220814";
+$version= "VERSION 6";
 Write-Host " __      ________________    _________ ________     _____  ___________" -ForegroundColor Green;
 Write-Host "/  \    /  \_   _____/   |   \_   ___ \\_____  \   /     \ \_   _____/" -ForegroundColor Green;
 Write-Host "\   \/\/   /|    __)_|   |   /    \  \/ /   |   \ /  \ /  \ |    __)_ " -ForegroundColor Green;
@@ -161,6 +185,15 @@ Write-Host " \        / |        \   |___\     \____    |    \    \    \|       
 Write-Host "  \__/\  / /_______  /______ \\______  /_______  /____/\_  /_______  /" -ForegroundColor Green;
 Write-Host "       \/          \/       \/       \/        \/        \/        \/ " -ForegroundColor Green; 
 MainMenu; # call function MainMenu
+
+# Changelogs (version 6)
+# Streamlining functions to be similar with what get on android side like:
+# greeting directly to paste youtube url
+# removing encode mp4 via ffmpeg (1080p will be downloaded in h264 codec instead)
+# pls encode 2k/4k webm video via ffmpeg using shutter encoder instead. This is simplify user experience goddamit.
+# 720p option removal due to its low quality and everyone wnats hd quality nowadays, and 1080p is small in size now.
+# (even if you have slow internet connection, you are downloading, not streaming)
+# inserting other/blank will defaulted to download 1080p video. To cancel, pls enter in nonsesnse on youtube url instead OR exit the terminal.
 
 # For those who opening this source code, here's some changelogs (VERSION 5)
 # - Added new function to delete webm, organise webm into a folder, or let it unchanged.

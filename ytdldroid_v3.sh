@@ -34,7 +34,7 @@ OfferAV1 () {
     echo
 }
 
-TypeNQualitySelectionSingleMedia () {
+TypeNQualitySelection () {
     echo
     echo -e "${y}Please specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.${e}"
     echo -e "${y}(A) Audio Only${e}"
@@ -115,7 +115,7 @@ MainMenu () {
     echo
     read -e -p "Paste YouTube URL: " youtubelink
     echo
-    TypeNQualitySelectionSingleMedia;
+    TypeNQualitySelection;
 }
 
 # reminder to not have spaces between variable and dollar sign. Else command will fail.
