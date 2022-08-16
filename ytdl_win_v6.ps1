@@ -6,7 +6,7 @@ function Header {
     Write-Host "        ===================================================" -ForegroundColor Green;
     }
     
-$DLNaming= "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d_%(channel)s_%(title)s.%(ext)s"
+$DLNaming= 
 
 function MainMenu {Set-Location ~\; 
     Header; 
@@ -55,7 +55,7 @@ function DownloadNow { # define function to download section
             $videoid= "137+140"
         }
         BeforeDownloadRoutine;
-        ./yt-dlp $youtubelink -f $videoid -o $DLNaming;
+        ./yt-dlp $youtubelink -f $videoid -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)n.%(ext)s";
         #AV1 2k 400+140
         #AV1 4k 401+140
         #VP9 2k 271+251
