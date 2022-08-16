@@ -48,11 +48,13 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -f 400+140 -o $DLNaming;
+                Write-Host "400+140"
+                ./yt-dlp $youtubelink -f "400+140" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -f 271+251 -o $DLNaming;
+                Write-Host "271+251"
+                ./yt-dlp $youtubelink -f "271+251" -o $DLNaming;
             }
         }
         elseif ($typeselection -eq "4K") {
@@ -60,11 +62,13 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -f 401+140 -o $DLNaming;
+                Write-Host "401+140"
+                ./yt-dlp $youtubelink -f "401+140" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -f 313+251 -o $DLNaming;
+                Write-Host "313+251"
+                ./yt-dlp $youtubelink -f "313+251" -o $DLNaming;
             }
         }
         else {
