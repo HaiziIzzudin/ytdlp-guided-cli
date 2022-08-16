@@ -1,9 +1,6 @@
 # My plans of this software devs...
 
-<div id="all-os_combined-ww-monthly-202007-202207" width="600" height="400" style="width:600px; height: 400px;"></div><!-- You may change the values of width and height above to resize the chart --><p>Source: <a href="https://gs.statcounter.com/os-market-share#monthly-202007-202207">StatCounter Global Stats - OS Market Share</a></p><script type="text/javascript" src="https://www.statcounter.com/js/fusioncharts.js"></script><script type="text/javascript" src="https://gs.statcounter.com/chart.php?all-os_combined-ww-monthly-202007-202207&chartWidth=600"></script>
-
-
-I feel like windows version has finished. I mean you have the basic features, just I will only do bug fix. What I will add more features is on android (termux) side. Due to OS market share most of them is on Android, therefore I will focus on android development. I still allow receiving bugfix. Feel free to issue it.
+Android has the most user base, second is Windows. I feel like windows version has finished. I mean you have the basic features, just I will only do bug fix. What I will add more features is on android (termux) side. Due to OS market share most of them is on Android, therefore I will focus on android development. I still allow receiving bugfix. Feel free to issue it.
 
 # How To Use on Windows 11
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
@@ -22,8 +19,7 @@ I feel like windows version has finished. I mean you have the basic features, ju
 # LINUX SOON YA!
 
 ### Changelogs
-- **Windows:** Many has changed. I recommend you to check the source code. I really proud of it (Changelogs is at the bottom).
-- **Android:** You can now choose quality between 1080p, 2k and 4k, and have an offer for downloading in AV1 (AV1 decode is supported on select devices).
+Both version is now have a function very similar, and their code is also very similar. Take a look.
 
 ***Disclaimer: All rebrand.ly links is linked to the raw script inside this GitHub. No outside script were used. Don't believe me? Enter the rebrand.ly links into your browser then. It must have a domain name and TLD "raw.githubusercontent.com/..."***
 
