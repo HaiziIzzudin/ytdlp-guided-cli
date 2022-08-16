@@ -40,22 +40,22 @@ function DownloadNow { # define function to download section
         $typeselection= Read-Host -Prompt "`nPick a resolution";
 
         if ($typeselection -eq "2V1") {
-            $videoid= "400+140"
+            $videoid="res:1440,vcodec:av1"
         }
         elseif ($typeselection -eq "4V1") {
-            $videoid= "401+140"
+            $videoid="res:2560,vcodec:av1"
         }
         elseif ($typeselection -eq "2P9") {
-            $videoid= "271+251"
+            $videoid="res:1440,vcodec:vp9"
         }
         elseif ($typeselection -eq "4P9") {
-            $videoid= "313+251"
+            $videoid="res:2560,vcodec:vp9"
         }
-        else {
-            $videoid= "137+140"
+        else { #if blank/other, 1080 will be selected
+            $videoid="res:1080,vcodec:h264"
         }
         BeforeDownloadRoutine;
-        ./yt-dlp $youtubelink -f $videoid -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s";
+        ./yt-dlp $youtubelink -S '"$videoid"' -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s";
         #AV1 2k 400+140
         #AV1 4k 401+140
         #VP9 2k 271+251
