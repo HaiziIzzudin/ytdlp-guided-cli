@@ -18,7 +18,7 @@
 # new mainmenu will directly greet you with inserting youtube url
 function MainMenu {Set-Location ~\; 
     Header; 
-    $ytlink= Read-Host -Prompt "`nPaste YouTube URL";
+    $youtubelink= Read-Host -Prompt "`nPaste YouTube URL";
 	DownloadNow;
 }
 
@@ -31,12 +31,12 @@ function DownloadNow { # define function to download section
     if ($typeselection -eq "A") {
         BeforeDownloadRoutine;
         Write-Host "Downloading Audio Only on highest quality...";
-        ./yt-dlp $ytlink -f "ba" --recode-video mp3 -o $DLNaming;
+        ./yt-dlp $youtubelink -f "ba" --recode-video mp3 -o $DLNaming;
     }
     elseif ($typeselection -eq "N") {
         BeforeDownloadRoutine;
         Write-Host "Downloading Non-YouTube video...";
-        ./yt-dlp $ytlink
+        ./yt-dlp $youtubelink
     }
     else {
         Write-Host "`nDefaults (YouTube Video) selected. Please specify any of special resolution below. Leaving others/blank will defaulted to 1080p.";
