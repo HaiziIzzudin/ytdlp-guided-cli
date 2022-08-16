@@ -48,11 +48,11 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:1440,vcodec:av01" -o $DLNaming;
+                ./yt-dlp $youtubelink -f 400+140 -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:1440,vcodec:vp9" -o $DLNaming;
+                ./yt-dlp $youtubelink -f 271+251 -o $DLNaming;
             }
         }
         elseif ($typeselection -eq "4K") {
@@ -60,11 +60,11 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:2160,vcodec:av01" -o $DLNaming;
+                ./yt-dlp $youtubelink -f 401+140 -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:2160,vcodec:vp9" -o $DLNaming;
+                ./yt-dlp $youtubelink -f 313+251 -o $DLNaming;
             }
         }
         else {
