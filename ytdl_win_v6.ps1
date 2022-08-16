@@ -55,7 +55,7 @@ function DownloadNow { # define function to download section
             $videoid="res:1080,vcodec:h264"
         }
         BeforeDownloadRoutine;
-        ./yt-dlp $youtubelink -S "'$videoid'" -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s";
+        ./yt-dlp $youtubelink -S $videoid -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s";
         #AV1 2k 400+140
         #AV1 4k 401+140
         #VP9 2k 271+251
