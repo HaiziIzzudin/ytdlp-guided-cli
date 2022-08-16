@@ -48,7 +48,7 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:1440,vcodec:av1" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:1440,vcodec:av01" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
@@ -60,7 +60,7 @@ function DownloadNow { # define function to download section
             
             if ($wantav1 -eq "Y") {
                 BeforeDownloadRoutine;
-                ./yt-dlp $youtubelink -S "res:2160,vcodec:av1" -o $DLNaming;
+                ./yt-dlp $youtubelink -S "res:2160,vcodec:av01" -o $DLNaming;
             }
             else {
                 BeforeDownloadRoutine;
