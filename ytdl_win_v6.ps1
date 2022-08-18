@@ -93,8 +93,14 @@ function BeforeDownloadRoutine {
 
 function RefreshPrereq () {
     # if statements to delete (this to avoid erroring on client side)
-    if ((Test-Path -Path "~\ffmpeg.zip") -eq $True) {Remove-Item "~\ffmpeg.zip" -Recurse -Force;}
-    if ((Test-Path -Path "~\ffmpeg-master-latest-win64-gpl-shared\bin\yt-dlp.exe") -eq $True) {Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force;}
+    if ((Test-Path -Path "~\ffmpeg.zip") -eq $True) {
+        Write-Host "Removing ffmpeg.zip";
+        Remove-Item "~\ffmpeg.zip" -Recurse -Force;
+    }
+    if ((Test-Path -Path "~\ffmpeg-master-latest-win64-gpl-shared\bin\yt-dlp.exe") -eq $True) {
+        Write-Host "Removing yt-dlp and ffmpeg folder";
+        Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force;
+    }
     # Download ffmpeg win64
     Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile .\ffmpeg.zip; 
 	# Extract ffmpeg.zip archive
