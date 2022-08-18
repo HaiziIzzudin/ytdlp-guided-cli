@@ -8,8 +8,13 @@ function Header {
 
 function MainMenu {Set-Location ~\; 
     Header; 
+    Write-Host "Paste YouTube URL OR key in [R] to reinstall/update prerequisites"
     $youtubelink= Read-Host -Prompt "`nPaste YouTube URL";
-	DownloadNow;
+	
+    if ($typeselection -eq "R") {
+        RefreshPrereq;
+    }
+    else {DownloadNow;}
 }
 
 function DownloadNow { # define function to download section
@@ -65,14 +70,10 @@ function DownloadNow { # define function to download section
 
 function DonwloadDone () {
     Write-Host "`n`n`nDownload done! Video is available in Desktop\YouTube_Downloader\`n" -ForegroundColor Green;
-    $returnhome= Read-Host -Prompt "If the above download process fails/buggy, you can reinstall package by`n[R] Reinstall/update prerequisites`n`nOtherwise:`n[P] Show in Folder`n[others/blank] Return to Main Menu";
-    if ($returnhome -eq "O") {
+    $returnhome= Read-Host -Prompt "`n[P] Show in Folder`n[others/blank] Return to Main Menu";
+    if ($returnhome -eq "P") {
         Invoke-Item "~\Desktop\YouTube_Downloads\";
         Clear-Host; MainMenu;
-    }
-    elseif ($returnhome -eq "R") {
-        Write-Host "`n`nUpdating prerequisites..." -ForegroundColor Yellow;
-        RefreshPrereq; Pause; Clear-Host; MainMenu;
     }
     else {
         Clear-Host; MainMenu;
@@ -97,7 +98,7 @@ function RefreshPrereq () {
         Write-Host "Removing ffmpeg.zip";
         Remove-Item "~\ffmpeg.zip" -Recurse -Force;
     }
-    if ((Test-Path -Path "~\ffmpeg-master-latest-win64-gpl-shared\bin\yt-dlp.exe") -eq $True) {
+    if ((Test-Path -Path "~\ffmpeg-master-latest-win64-gpl-shared\") -eq $True) {
         Write-Host "Removing yt-dlp and ffmpeg folder";
         Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force;
     }
