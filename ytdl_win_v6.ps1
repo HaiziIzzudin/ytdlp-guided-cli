@@ -12,7 +12,7 @@ function MainMenu {Set-Location ~\;
     $youtubelink= Read-Host -Prompt "`nPaste YouTube URL";
 	
     if ($youtubelink -eq "R") {
-        RefreshPrereq;
+        RefreshPrereq; Clear-Host; MainMenu;
     }
     else {DownloadNow;}
 }
