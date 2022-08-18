@@ -5,8 +5,6 @@ function Header {
     Write-Host "         POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL" -ForegroundColor Green;
     Write-Host "        ===================================================" -ForegroundColor Green;
     }
-    
-$DLNaming= 
 
 function MainMenu {Set-Location ~\; 
     Header; 
@@ -79,17 +77,25 @@ function DonwloadDone () {
 
 function BeforeDownloadRoutine {
     Write-Host "`n`nChecking prerequisites..." -ForegroundColor Yellow
-    if ((Test-Path -Path "~\ffmpeg.zip") -eq $True) {
+    if ((Test-Path -Path "~\ffmpeg-master-latest-win64-gpl-shared\bin\yt-dlp.exe") -eq $True) {
         Write-Host "`nYou already have the file required.`n" -ForegroundColor Green; 
         Set-Location ~\ffmpeg-master-latest-win64-gpl-shared\bin\; 
     }
     else {
         Write-Host "`nYour computer don't have the required file to run.`nAllow program to download it first." -ForegroundColor DarkMagenta;
-	    Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile .\ffmpeg.zip; # Download ffmpeg win64
-	    Expand-Archive -LiteralPath "~\ffmpeg.zip" -DestinationPath "~\"; # Extract ffmpeg.zip (renamed) archive
+	    # Delete remaining prerequisites first to avoid conflicts
+        Remove-Item "~\ffmpeg.zip" -Recurse -Force; Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force;
+        # Download ffmpeg win64
+        Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile .\ffmpeg.zip; 
+	    # Extract ffmpeg.zip archive
+        Expand-Archive -LiteralPath "~\ffmpeg.zip" -DestinationPath "~\"; 
+        # Change active directory to extracted
         Set-Location ~\ffmpeg-master-latest-win64-gpl-shared\bin\;
+        # Now download yt-dlp binary
         Invoke-WebRequest -Uri https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe -OutFile .\yt-dlp.exe;
-        #Downloaded yt-dlp.exe in the ffmpeg\bin folder
+        # Delete remaining ffmpeg.zip (we dont need it anymore)
+        Remove-Item "~\ffmpeg.zip" -Recurse -Force;
+        # Message downloads prereq done
         Write-Host "`nPrerequisites downloads done!" -ForegroundColor Green;
     }
 }
