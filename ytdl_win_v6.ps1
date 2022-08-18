@@ -101,6 +101,8 @@ function RefreshPrereq () {
         Write-Host "Removing yt-dlp and ffmpeg folder";
         Remove-Item "~\ffmpeg-master-latest-win64-gpl-shared\" -Recurse -Force;
     }
+    #Change directory to home
+    Set-Location ~\;
     # Download ffmpeg win64
     Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile .\ffmpeg.zip; 
 	# Extract ffmpeg.zip archive
