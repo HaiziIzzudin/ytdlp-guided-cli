@@ -11,7 +11,7 @@ function MainMenu {Set-Location ~\;
     Write-Host "Paste YouTube URL OR key in [R] to reinstall/update prerequisites"
     $youtubelink= Read-Host -Prompt "`nPaste YouTube URL";
 	
-    if ($typeselection -eq "R") {
+    if ($youtubelink -eq "R") {
         RefreshPrereq;
     }
     else {DownloadNow;}
