@@ -72,8 +72,7 @@ function DonwloadDone () {
     }
     elseif ($returnhome -eq "R") {
         Write-Host "`n`nUpdating prerequisites..." -ForegroundColor Yellow;
-        RefreshPrereq;
-        Clear-Host; MainMenu;
+        RefreshPrereq; Pause; Clear-Host; MainMenu;
     }
     else {
         Clear-Host; MainMenu;
