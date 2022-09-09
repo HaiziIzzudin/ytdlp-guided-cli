@@ -6,15 +6,17 @@ iwr rebrand.ly/ytdlpgcli | iex
 ```
 
 # How to use on Linux (Any distro as long as its DEBIAN based)
-If you are a first time user (or you formatted your Linux PC), you need to install powershell. Enter in below command into terminal:
+If you are a first time user (or you formatted your Linux PC), you need to INSTALL PowerShell. Enter in below command into terminal. Else if you already has installed PowerShell (or you are a comeback customer), SKIP THIS STEP.
 ```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/HaiziIzzudin/ytdlp-guided-cli/main/powershell_installer.sh)";
+sudo apt update && sudo apt install -y curl gnupg apt-transport-https;curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -;sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/microsoft.list';sudo apt update && sudo apt install -y powershell;
 ```
-Else if you are a comeback customer (or you already have powershell installed), do enter in below command to run.
+Next, enter in `pwsh`.
+
+Lastly, enter in below command to proceed for further instructions...
 ```
 iwr rebrand.ly/ytdlpgcli | iex
 ```
-You need to c&p above command in **POWERSHELL COMMAND** mode. If you are not already in powershell command mode, simply enter in `pwsh`.
+**Please make sure above command is entered inside powershell command mode. It looks like `PS   /home/path >`**
 
 ### State of maintenance
 Android has been removed due to its unfriendly method. I recommend [Seal](https://f-droid.org/en/packages/com.junkfood.seal/) instead (opens in fdroid)
