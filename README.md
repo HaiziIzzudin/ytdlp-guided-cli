@@ -1,9 +1,16 @@
 # How To Use on Windows (All versions)
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
-2. Copy and paste this command `iwr rebrand.ly/ytdlwin | iex`
+2. Copy and paste this command: 
+```
+iwr rebrand.ly/ytdlpgcli | iex
+```
 
-# How to use on Linux
-1. wrqPDCLfAK8bwqCcKEZJg8DR4JqGbePfZtPemR2WQT3ck9SP2LLVfsStvwY8BvjJ7hkjqZfjsfWuR8qaf9Zj8TaMBYK3MCJ8S7xz (soon)
+# How to use on Linux (Any distro as long as its DEBIAN based)
+1. Open terminal.
+2. Copy and paste this command:
+```
+iwr rebrand.ly/ytdlpgcli | iex
+```
 
 ### State of maintenance
 Android has been removed due to its unfriendly method. I recommend [Seal](https://f-droid.org/en/packages/com.junkfood.seal/) instead (opens in fdroid)
