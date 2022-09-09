@@ -9,7 +9,7 @@ iwr rebrand.ly/ytdlpgcli | iex
 1. Open terminal.
 2. Copy and paste this command:
 ```
-iwr rebrand.ly/ytdlpgcli | iex
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/HaiziIzzudin/ytdlp-guided-cli/main/powershell_installer.sh)";
 ```
 
 ### State of maintenance
