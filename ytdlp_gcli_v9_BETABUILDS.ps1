@@ -30,7 +30,7 @@ function DownloadNow { # define function to download section
     Write-Host "`nPlease specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video." -ForegroundColor Green; 
     # User chooses type
     Write-Host "`n[N] Not from YouTube platform (may uses m3u8 method)" -ForegroundColor Green;
-    $typeselection= Read-Host -Prompt "`n`nEnter type of download";
+    $typeselection = Read-Host -Prompt "`n`nEnter type of download";
         
     if ($typeselection -eq "N") {
         BeforeDownloadRoutine;
@@ -69,7 +69,12 @@ function DownloadNow { # define function to download section
 }
 
 function LinksArray {
-    while
+    $arr = @()
+    while ($item -ne "END") {
+        $item = Read-Host -Prompt "Enter in link for array number $lastarr_entrycount.`n`n(Write 'END' to end array list)";
+        $arr += $item;
+    }
+    $arr;
 }
 
 function DonwloadDone () {
