@@ -73,7 +73,7 @@ function LinksArray {
     $arr += $youtubelink;
     while ($item -ne "END") {
         $lastarr_entrycount = $arr.Length;
-        $item = Read-Host -Prompt "Enter in link for array number $lastarr_entrycount.`n`n(Write 'END' to end array list)";
+        $item = Read-Host -Prompt "`nEnter in link for array number $lastarr_entrycount.`n`n(Write 'END' to end array list)";
         $arr += $item;
         Clear-Host; Header;
     }
