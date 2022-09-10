@@ -19,10 +19,10 @@ function MainMenu {Set-Location ~\;
     }
     else {
         $choicemultiplelinks = Read-Host -Prompt "Is your downloads consists of multiple links? (many download links?)`n[y] Yes       [N] No (Default)";
-        if ($typeselection -ne "y") {
-            DownloadNow; }
+        if ($choicemultiplelinks -eq "y") {
+            LinksArray; }
         else {
-            LinksArray;}
+            DownloadNow;}
     }
 }
 
