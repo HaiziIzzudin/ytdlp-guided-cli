@@ -1,6 +1,6 @@
 function Header {
     Write-Host "        ===================================================" -ForegroundColor Green;
-    Write-Host "         YOUTUBE DOWNLOADER ONE-LINER BY HAIZI IZZUDIN" -ForegroundColor Green;
+    Write-Host "         YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN" -ForegroundColor Green;
     Write-Host "         YOUR PLATFORM IS $platform. RUNNING $version" -ForegroundColor Green;
     Write-Host "         POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL" -ForegroundColor Green;
     Write-Host "        ===================================================" -ForegroundColor Green;
