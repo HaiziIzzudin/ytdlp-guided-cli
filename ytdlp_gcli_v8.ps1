@@ -14,7 +14,7 @@ function MainMenu {Set-Location ~\;
     if ($youtubelink -eq "R") {
         RefreshPrereq; Clear-Host; MainMenu;
     }
-    if ($youtubelink -eq "C") {
+    elseif ($youtubelink -eq "C") {
         Clear-Host; Changelogs;
     }
     else {DownloadNow;}
