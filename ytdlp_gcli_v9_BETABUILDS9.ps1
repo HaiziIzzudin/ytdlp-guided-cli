@@ -74,9 +74,9 @@ function LinksArray {
         $arr += $item;
         Clear-Host; Header;
     }
-    DownloadConfig; 
-    foreach ($youtubelink in $arr) {
-        ./yt-dlp $youtubelink -S $videoid -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s"; }
+    DownloadConfig; Clear-Host;
+    foreach ($onelinkarr in $arr) {
+        ./yt-dlp $onelinkarr -S $videoid -o "~/Desktop/YouTube_Downloads/%(title)s_%(height)d.%(ext)s"; }
     DonwloadDone;
 }
 
@@ -84,10 +84,6 @@ function LinksArray {
 
 function SingleVideo_DownloadCmd {
     ./yt-dlp $youtubelink -S $videoid -o "~/Desktop/YouTube_Downloads/%(playlist_autonumber)d %(title)s %(vcodec)s_%(height)d.%(ext)s"; }
-
-function MultiVideo_DownloadCmd {
-    
-}
 
 function DonwloadDone () {
     Write-Host "`n`n`nDownload done! Video is available in Desktop\YouTube_Downloader\`n" -ForegroundColor Green;
