@@ -19,7 +19,7 @@ function MainMenu {Set-Location ~\;
             Write-Host "Downloading Non-YouTube video. Plesae be patient...";
             foreach ($onelinkarr in $arr) {
                 Write-Host "./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/;";
-                ./yt-dlp $onelinkarr -f "bv*+ba/b" -P ~/Desktop/YouTube_Downloads/; 
+                ./yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/; 
             } 
             DonwloadDone;
         }
