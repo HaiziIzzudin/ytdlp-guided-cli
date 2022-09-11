@@ -20,7 +20,9 @@ function MainMenu {Set-Location ~\;
             foreach ($onelinkarr in $arr) {
                 Write-Host "./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/;";
                 ./yt-dlp $onelinkarr -f "bv*+ba/b" -P ~/Desktop/YouTube_Downloads/; 
-            } DonwloadDone;
+            } 
+            DonwloadDone;
+        }
         else {
             Write-Host "`nDefaults (YouTube Video) selected. Please specify quality...`n`n1080p (default) will be downloaded in H264 codec`n2K will download in VP9 codec`n4K video will be downloaded in AV1 codec";
             $typeselection= Read-Host -Prompt "`nPlease type 2K OR 4K, or leave others/blank to download 1080p";
@@ -37,7 +39,8 @@ function MainMenu {Set-Location ~\;
             foreach ($onelinkarr in $arr) {
                 Write-Host "./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;";
                 ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
-            } DonwloadDone;
+            } 
+            DonwloadDone;
         }
     }
 }
