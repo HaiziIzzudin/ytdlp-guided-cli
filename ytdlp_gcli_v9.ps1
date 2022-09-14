@@ -20,7 +20,7 @@ function MainMenu {Set-Location ~\;
             BeforeDownloadRoutine;
             Write-Host "Downloading Non-YouTube video. Plesae be patient...";
             foreach ($onelinkarr in $arr) {
-                Write-Host ;
+                $i = $i + 1; 
                 Write-Host "[$amountfinished] ./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/`n";
                 ./yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/; 
             } 
@@ -40,6 +40,7 @@ function MainMenu {Set-Location ~\;
             }
             BeforeDownloadRoutine; Write-Host "Download has started. Please be patient...";
             foreach ($onelinkarr in $arr) {
+                $i = $i + 1; 
                 Write-Host "[$amountfinished] ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/`n";
                 ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
             } 
