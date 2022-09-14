@@ -11,7 +11,9 @@ function MainMenu {Set-Location ~\;
             $lastarr_entrycount = $arr.Length + 1;
             $item = Read-Host -Prompt "`nEnter in link for slot number $lastarr_entrycount.`n`n(Write 'END' to end list)";
             $arr += $item; Clear-Host; Header;
+            
         }
+        $amountfinished = "$i" + "/" + $arr.Length;
         Write-Host "`nPlease specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.`n`n[N] Not from YouTube platform (may uses m3u8 method)" -ForegroundColor Green; 
         $typeselection = Read-Host -Prompt "`nEnter type of download";
         if ($typeselection -eq "N") {
@@ -19,7 +21,7 @@ function MainMenu {Set-Location ~\;
             Write-Host "Downloading Non-YouTube video. Plesae be patient...";
             foreach ($onelinkarr in $arr) {
                 Write-Host ;
-                Write-Host [$i/$arr.Length] ./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/;
+                Write-Host "[$amountfinished] ./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/`n";
                 ./yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/; 
             } 
             DonwloadDone;
@@ -38,7 +40,7 @@ function MainMenu {Set-Location ~\;
             }
             BeforeDownloadRoutine; Write-Host "Download has started. Please be patient...";
             foreach ($onelinkarr in $arr) {
-                Write-Host [$i/$arr.Length] ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
+                Write-Host "[$amountfinished] ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/`n";
                 ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
             } 
             DonwloadDone;
