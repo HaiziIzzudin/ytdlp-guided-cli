@@ -18,7 +18,8 @@ function MainMenu {Set-Location ~\;
             BeforeDownloadRoutine;
             Write-Host "Downloading Non-YouTube video. Plesae be patient...";
             foreach ($onelinkarr in $arr) {
-                Write-Host "./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/;";
+                Write-Host ;
+                Write-Host [$i/$arr.Length] ./yt-dlp $onelinkarr -f bv*+ba/b -P ~/Desktop/YouTube_Downloads/;
                 ./yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/; 
             } 
             DonwloadDone;
@@ -37,7 +38,7 @@ function MainMenu {Set-Location ~\;
             }
             BeforeDownloadRoutine; Write-Host "Download has started. Please be patient...";
             foreach ($onelinkarr in $arr) {
-                Write-Host "./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;";
+                Write-Host [$i/$arr.Length] ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
                 ./yt-dlp $onelinkarr -f $videoid -P ~/Desktop/YouTube_Downloads/;
             } 
             DonwloadDone;
@@ -99,9 +100,9 @@ function Changelogs {
     Write-Host "Changelogs $version";Write-Host "- There will be a function to input arrays of links, and while loops download all videos into a folder (require quality video set beforehand.)`nYeah this loks only one changelogs, but the code is super confusing, like I almost give up.";Pause; Clear-Host; MainMenu; }
 
 function Header {
-    Write-Host "    YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN - YOUR PLATFORM IS $platform " -ForegroundColor Green;
-    Write-Host "    POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL - RUNNING $version" -ForegroundColor Green;
-    Write-Host "====================================================================================" -ForegroundColor Green; }
+    Write-Host " YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN - YOUR PLATFORM IS $platform " -ForegroundColor Green;
+    Write-Host " POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL - RUNNING $version" -ForegroundColor Green;
+    Write-Host "=============================================================================" -ForegroundColor Green; }
 
 Clear-Host; Set-Location ~\; # Program actually starts here
 $version= "VERSION 9";
