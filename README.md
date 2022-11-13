@@ -2,10 +2,10 @@
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
 2. Copy and paste this command: 
 ```
-iwr rebrand.ly/ytdlpgcli | iex
+iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.ps1 | iex
 ```
 
-# How to use on Linux (Any distro as long as its DEBIAN based)
+# Linux !PLEASE WAIT FOR V11!
 1. If you are a first time user (or you formatted your Linux PC), you need to INSTALL PowerShell. Enter in below command into terminal. Else if you already has installed PowerShell (or you are a comeback customer), SKIP THIS STEP.
 ```
 sudo apt update && sudo apt install -y curl gnupg apt-transport-https;curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -;sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/microsoft.list';sudo apt update && sudo apt install -y powershell;
