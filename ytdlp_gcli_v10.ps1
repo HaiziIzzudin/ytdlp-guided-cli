@@ -6,12 +6,13 @@ function MainMenu { Header;
         Clear-Host; Changelogs;
     }
     else {
-        $arr = @(); $arr += $youtubelink;
-        while ($item -ne "END") {
-            $lastarr_entrycount = $arr.Length + 1;
+        $arr = @();                                 # create new empty array
+        $arr += $youtubelink;                       # add new inputted youtube link into array
+        while ($item -ne "END") {                   # while loop item is NOT equal to END (non-case)
+            $lastarr_entrycount = $arr.Length + 1;  # add 1 to the lastarr_entrycount to be displayed in next message 
             $item = Read-Host -Prompt "`nEnter in link for slot number $lastarr_entrycount.`n`n(Write 'END' to end list)";
-            $arr += $item; Clear-Host; Header;
-        }
+            $arr += $item; Clear-Host; Header;      # ask user to input next ytlink, and add item to the array
+        }   # if END is detected...
         Write-Host "`nPlease specify any specialty of this download. Leaving others/blank will defaulted to download YouTube Video.`n`n[N] Not from YouTube platform (may uses m3u8 method)" -ForegroundColor Green; 
         $typeselection = Read-Host -Prompt "`nEnter type of download";
         if ($typeselection -eq "N") {
@@ -82,27 +83,14 @@ function BeforeDownloadRoutine {
         }
     }
     else {
-        Write-Host "`n`nChecking prerequisites..." -ForegroundColor Yellow;
-        if ((Test-Path -Path "~/yt-dlp") -eq $True) {
-            Write-Host "`nYou already have the file required.`n" -ForegroundColor Green; }
-        else {
-            Write-Host "`nYou don't have the required file.`nWe'll download it first." -ForegroundColor Yellow;
-            Write-Host "Removing old linux binary module";
-            if ((Test-Path -Path "~/ffmpeg") -eq $True) { Remove-Item "~/ffmpeg" -Recurse -Force; }
-            if ((Test-Path -Path "~/yt-dlp") -eq $True) { Remove-Item "~/yt-dlp" -Recurse -Force; }
-            Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz -OutFile ~/ffmpeg.tar.xz; # Download ffmpeg linux64
-	        tar -xf ffmpeg.tar.xz; # Expand tarball
-            Remove-Item "~/ffmpeg.tar.xz" -Recurse -Force; # Delete Archive after expansion
-            Move-Item -Path ~/ffmpeg-master-latest-linux64-gpl/bin/ffmpeg -Destination ~/; # Move ffmpeg.exe to home dir
-            Remove-Item "~/ffmpeg-master-latest-linux64-gpl/" -Recurse -Force; # Remove item ffmpeg directory
-            Invoke-WebRequest -Uri https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -OutFile ~/yt-dlp; # Now download yt-dlp executable
-            chmod u+x ./yt-dlp; # set permission for current user to program be executable
-            Write-Host "`nPrerequisites downloads done!" -ForegroundColor Green; # Message downloads prereq done 
-        }
+        Write-Host "Linux has been deprecated and removed. New program will be written to replace linux binary update method. Wait for v11.`n`nSorry for inconvenience. You can now exit." -ForegroundColor Red;
     }
 }
 function Changelogs {
-    Write-Host "Changelogs $version";Write-Host "- Code is redesigned, now ffmpeg and ffprobe binary will be in PATH instead, so if you want to use ffmpeg standalone, you can.`nAs of right now, above only applies to windows, but linux very soon. V11 mybe.";Pause; Clear-Host; MainMenu; }
+    Write-Host "Changelogs $version";
+    Write-Host "- Code is redesigned, now ffmpeg and ffprobe binary will be in PATH instead, so if you want to use ffmpeg standalone, you can."
+    Write-Host "- OLD Linux binary install and uninstall has been deprecated and removed. New method will be introduced in v11 instead.";
+    Pause; Clear-Host; MainMenu; }
 
 function Header {
     Write-Host " YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN - YOUR PLATFORM IS $platform " -ForegroundColor Green;
