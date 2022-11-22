@@ -14,7 +14,7 @@ sudo apt update && sudo apt install -y curl gnupg apt-transport-https;curl https
 
 3. Enter in below command to proceed for further instructions...
 ```
-iwr rebrand.ly/ytdlpgcli | iex
+iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.ps1 | iex
 ```
 **Please make sure above command is entered inside powershell command mode. It looks like `PS   /home/path >`**
 
