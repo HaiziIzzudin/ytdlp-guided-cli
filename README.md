@@ -2,7 +2,7 @@
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
 2. Copy and paste this command: 
 ```
-iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.ps1 | iex
+iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.5.ps1 | iex
 ```
 
 # Linux !PLEASE WAIT FOR V11!
@@ -14,7 +14,7 @@ sudo apt update && sudo apt install -y curl gnupg apt-transport-https;curl https
 
 3. Enter in below command to proceed for further instructions...
 ```
-iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.ps1 | iex
+iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.5.ps1 | iex
 ```
 **Please make sure above command is entered inside powershell command mode. It looks like `PS   /home/path >`**
 
