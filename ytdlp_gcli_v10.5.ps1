@@ -47,7 +47,7 @@ function MainMenu { Header;
                     Invoke-Expression -Command "yt-dlp $onelinkarr -f $videoid --restrict-filenames -P ~/Desktop/YouTube_Downloads/";
                 }
                 else {
-                    Invoke-Expression -Command "yt-dlp $onelinkarr -f $videoid --restrict-filenames --write-subs --write-auto-subs --embed-subs --sub-langs all -P ~/Desktop/YouTube_Downloads/";
+                    Invoke-Expression -Command "yt-dlp $onelinkarr -f $videoid --restrict-filenames --write-subs --embed-subs -P ~/Desktop/YouTube_Downloads/";
                 }
             }
         }
