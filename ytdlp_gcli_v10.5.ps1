@@ -83,17 +83,17 @@ function BeforeDownloadRoutine {
 }
 function Changelogs {
     Write-Host "Changelogs $version";
-    Write-Host "- Code is redesigned, now ffmpeg and ffprobe binary will be in PATH instead, so if you want to use ffmpeg standalone, you can."
-    Write-Host "- OLD Linux binary install and uninstall has been deprecated and removed. New method will be introduced in v11 instead.";
+    Write-Host "- Linux has been removed. New method will be made instead. Wait for V11."
+    Write-Host "- Added new embed subs function.";
     Pause; Clear-Host; MainMenu; }
 
 function Header {
-    Write-Host " YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN - YOUR PLATFORM IS $platform " -ForegroundColor Green;
-    Write-Host " POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL - RUNNING $version" -ForegroundColor Green;
-    Write-Host "=============================================================================" -ForegroundColor Green; }
+    Write-Host " YOUTUBE DOWNLOADER GUIDED CLI BY HAIZI IZZUDIN`n YOUR PLATFORM IS $platform RUNNING $version" -ForegroundColor Green;
+    Write-Host " POWERED BY YT-DLP AND FFMPEG, CODED IN POWERSHELL" -ForegroundColor Green;
+    Write-Host "===================================================" -ForegroundColor Green; }
 
 Clear-Host; Set-Location ~\; # Program actually starts here
-$version= "VERSION 10";
+$version= "VERSION 10.5";
 Write-Host " __      ________________    _________ ________     _____  ___________" -ForegroundColor Green;
 Write-Host "/  \    /  \_   _____/   |   \_   ___ \\_____  \   /     \ \_   _____/" -ForegroundColor Green;
 Write-Host "\   \/\/   /|    __)_|   |   /    \  \/ /   |   \ /  \ /  \ |    __)_ " -ForegroundColor Green;
