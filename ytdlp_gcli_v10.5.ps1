@@ -23,9 +23,8 @@ function MainMenu { Header;
             BeforeDownloadRoutine;
             Write-Host "Downloading Non-YouTube video. Plesae be patient...";
             foreach ($onelinkarr in $arr) {
-                yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/; 
+                Invoke-Expression -Command "yt-dlp $onelinkarr -f "bv*+ba/b" --restrict-filenames -P ~/Desktop/YouTube_Downloads/"; 
             } 
-            DonwloadDone;
         }
         else {
             Write-Host "`nDefaults (YouTube Video) selected. Please specify quality...`n`n1080p (default) will be downloaded in H264 codec`n2K will download in VP9 codec`n4K video will be downloaded in AV1 codec";
@@ -50,9 +49,9 @@ function MainMenu { Header;
                 else {
                     Invoke-Expression -Command "yt-dlp $onelinkarr -f $videoid --restrict-filenames --write-subs --write-auto-subs --embed-subs --sub-langs all -P ~/Desktop/YouTube_Downloads/";
                 }
-            } 
-            Write-Host "Download done!"; Invoke-Item "~\Desktop\YouTube_Downloads\"; MainMenu;
+            }
         }
+        Write-Host "Download done!"; Invoke-Item "~\Desktop\YouTube_Downloads\"; MainMenu;
     }
 }
 
