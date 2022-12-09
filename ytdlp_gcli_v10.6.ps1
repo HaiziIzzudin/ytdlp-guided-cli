@@ -67,7 +67,7 @@ function BeforeDownloadRoutine {
             Set-Location ~\AppData\Local\Microsoft\WindowsApps;                                                                # CD TO PATHABLE
             if ((Test-Path -Path .\ffmpeg.exe) -eq $True) { Remove-Item .\ffmpeg.exe -Recurse -Force; }                        # REMOVE FFMPEG.EXE IF EXISTS
             if ((Test-Path -Path .\yt-dlp.exe) -eq $True) { Remove-Item .\yt-dlp.exe -Recurse -Force; }                        # REMOVE YT-DLP.EXE IF EXISTS
-            Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip -OutFile .\ffmpeg.zip; 
+            Invoke-WebRequest -Uri https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip -OutFile .\ffmpeg.zip; 
 	        Invoke-WebRequest -Uri https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe -OutFile .\yt-dlp.exe; # DOWNLOAD YT-DLP EXECUTABLE
             Expand-Archive -LiteralPath ".\ffmpeg.zip" -DestinationPath ".\";                                                  # EXPAND ARCHIVE FFMPEG.EXE
             Move-Item -Path .\ffmpeg-master-latest-win64-gpl\bin\ffmpeg.exe -Destination .\;                                   # TAKEOUT FFMPEG.EXE TO PATHABLE
