@@ -2,7 +2,7 @@
 1. Open Windows Terminal (Use of terminal is NOT mandatory, you can use Windows PowerShell too.)
 2. Copy and paste this command: 
 ```
-iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.5.ps1 | iex
+iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.6.ps1 | iex
 ```
 
 # Linux !PLEASE WAIT FOR V11!
