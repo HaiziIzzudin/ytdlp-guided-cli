@@ -93,7 +93,7 @@ function Header {
     Write-Host "===================================================" -ForegroundColor Green; }
 
 Clear-Host; Set-Location ~\; # Program actually starts here
-$version= "VERSION 10.5";
+$version= "VERSION 10.6";
 Write-Host " __      ________________    _________ ________     _____  ___________" -ForegroundColor Green;
 Write-Host "/  \    /  \_   _____/   |   \_   ___ \\_____  \   /     \ \_   _____/" -ForegroundColor Green;
 Write-Host "\   \/\/   /|    __)_|   |   /    \  \/ /   |   \ /  \ /  \ |    __)_ " -ForegroundColor Green;
