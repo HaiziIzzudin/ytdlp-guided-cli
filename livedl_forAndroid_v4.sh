@@ -22,5 +22,5 @@ if [[ -d "$foldername" ]]
 then
     cd $foldername;
 else
-    mkdir $foldername | cd;
+    mkdir "$foldername"; cd "$foldername";
 fi
