@@ -14,7 +14,7 @@ read -e -p "Enter in game name: " gamename
 
 
 # naming scheme
-d=`date +%Y%m%d`; foldername="$d_ $gamename";
+d=`date +%Y%m%d`; foldername="$d $gamename";
 
 
 # Check if file gameName already available. If not, create one. Then, cd into it.
@@ -22,5 +22,5 @@ if [[ -d "$foldername" ]]
 then
     cd $foldername;
 else
-    mkdir $foldername; cd $foldername;
+    mkdir $foldername | cd;
 fi
