@@ -25,3 +25,7 @@ then
 else
     mkdir "$fnmod"; cd "$fnmod";
 fi
+
+
+# yt-dlp command
+yt-dlp $yturl -f bv*+ba --no-part --live-from-start --restrict-filenames
