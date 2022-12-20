@@ -14,13 +14,14 @@ read -e -p "Enter in game name: " gamename
 
 
 # naming scheme
-d=`date +%Y%m%d`; foldername="$d $gamename";
+d=`date +%Y%m%d`; foldername="$d $gamename"; fnmod=${foldername:2};
+echo $fnmod
 
 
 # Check if file gameName already available. If not, create one. Then, cd into it.
-if [[ -d "$foldername" ]]
+if [[ -d "$fnmod" ]]
 then
-    cd $foldername;
+    cd $fnmod;
 else
-    mkdir "$foldername"; cd "$foldername";
+    mkdir "$fnmod"; cd "$fnmod";
 fi
