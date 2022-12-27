@@ -5,7 +5,12 @@
 iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.6.ps1 | iex
 ```
 
-### Linux SOON™
+# Linux (UBUNTU)
+#### Guide below is only installing yt-dlp (binary download method).
+```
+sudo wget -P /usr/bin/ github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp; chmod +x /usr/bin/yt-dlp;
+```
+Check if installed by entering `yt-dlp` into terminal.
 
 ### Android has been removed due to its unfriendly method. I recommend [Seal](https://f-droid.org/en/packages/com.junkfood.seal/) instead (opens in fdroid)
 
