@@ -8,7 +8,7 @@ iwr github.com/HaiziIzzudin/ytdlp-guided-cli/raw/main/ytdlp_gcli_v10.6.ps1 | iex
 # Linux (UBUNTU)
 #### Guide below is only installing yt-dlp (binary download method).
 ```
-sudo wget -P /usr/bin/ github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp; sudo chmod +x /usr/bin/yt-dlp;
+sudo rm -rf /usr/bin/yt-dlp; sudo wget -P /usr/bin/ github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp; sudo chmod +x /usr/bin/yt-dlp;
 ```
 Check if installed by entering `yt-dlp` into terminal.
 
